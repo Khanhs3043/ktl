@@ -2,6 +2,20 @@
     $files = scandir("upload/");
     $noti = "";   
     $dir = "upload/"; 
+    $sortBySize = true;
+    $buttonName = "Sort by size";
+    $fileList = $files;
+                function compareBySize($a, $b) {
+                    return filesize("upload/$a") - filesize("upload/$b");
+                }
+                           
+                usort($fileList, 'compareBySize');
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if (isset($_POST["sort"])) {
+                        $sortBySize = !$sortBySize;
+
+                    }
+                }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +42,15 @@
             $noti = "Vui lòng chọn file để upload!";
         }
     ?>
-    <div class="sp"><span><?php echo $noti?></span></div>
+    <div class="sp">
+        <span><?php echo $noti?>     <br> 
+        <form action="index.php" class="sortType" method="post">
+        <button type="submit" class="sort" name="sort">
+            <?php echo $sortBySize ? 'sortBySize' : 'sortByName'; ?>
+        </button>
+    
+        </form>
+    </span></div>
         <table class="tbl" border="1">
             <tr>
                 <th>No</th>
@@ -38,10 +60,12 @@
                 <th>Size (bytes)</th>
             </tr> 
             <?php 
-                $no = -2;
-                foreach ($files as $file) {
-                    $no ++;
+                
+                $no = 0;
+                foreach ($fileList as $file) {
+                    
                     if ($file != '.' && $file != '..') {
+                        $no ++;
                         $fileName = $file;
                         $fileType = mime_content_type("upload/$file");
                         $fileSize = filesize("upload/$file");
