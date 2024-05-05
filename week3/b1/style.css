@@ -32,7 +32,7 @@
     width: 300px;
     background-color: white;
     border-radius: 20px;
-    font-size: 25px;
+    font-size: 20px;
     padding: 0px 10px;
     border: none;
 }
@@ -42,11 +42,35 @@
     border: none;
     background-color: rgb(166, 226, 226);
     border-radius: 30px; 
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 500;
     color: white;
 }
 .loginBtn:hover{
     background-color: rgb(181, 227, 227);
    
+}
+.noti{
+    font-size: 40px;
+    font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+.con{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+}
+.logoutBtn{
+    height: 40px;
+    width: 150px;
+    font-size: 17px;
+    color: white;
+    background-color: rgb(213, 103, 103);
+    border: none;
+    border-radius: 30px;
+}
+.logoutBtn:hover{
+    border: 3px solid rgb(177, 177, 177);
 }
