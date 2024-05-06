@@ -27,11 +27,11 @@ input[type="text"]:focus,
 input[type="password"]:focus {
     border-color: transparent; /* Loại bỏ viền */
     outline: none; /* Loại bỏ viền mặc định khi tập trung */
-    box-shadow: 0 0 5px 5px rgba(245, 0, 87, 0.5);
+    box-shadow: 0 0 5px 5px rgba(207, 120, 151, 0.5);
 }
 
 input[type="submit"] {
-    background-color: #f50057; /* Màu nút đăng nhập */
+    background-color: #dc88a5; /* Màu nút đăng nhập */
     color: white;
     cursor: pointer;
     width: 100%;
@@ -44,14 +44,14 @@ input[type="submit"] {
     transition: background-color 0.3s; /* Thêm hiệu ứng chuyển đổi màu nút */
 }
 input[type="submit"]:hover {
-    background-color: #c51162; /* Màu nút đăng nhập khi hover */
+    background-color: #d28dac; /* Màu nút đăng nhập khi hover */
 }
 .forgot-password {
     text-align: center;
     margin-top: 10px;
 }
 .forgot-password a {
-    color: #f50057; /* Màu link quên mật khẩu */
+    color: #cf084e; /* Màu link quên mật khẩu */
     text-decoration: none;
 }
 .login-with-social {
