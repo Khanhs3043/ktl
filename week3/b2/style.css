@@ -1,11 +1,12 @@
 .tbl{
+    min-width: 800px;
     margin: auto;
-    width: 1000px;
+    width: 80%;
     border-collapse: collapse;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .upload{
-    margin-top: 50px;
+    margin-top: 20px;
    display: flex;
    justify-content: center;
 }
@@ -20,12 +21,14 @@ th{
     background-color: rgb(217, 221, 225);
     font-weight: 600;
 }
-.sort{
-    margin-top: 20px;
-}
-.sp{
-    font-family: Arial, Helvetica, sans-serif;
+.title{
     margin-top: 30px;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    color: palevioletred;
+}
+.noti{
+    margin-top: 20px;
+    color: red;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
 }
