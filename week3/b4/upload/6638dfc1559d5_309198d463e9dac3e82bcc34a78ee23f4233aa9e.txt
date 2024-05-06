@@ -1,0 +1,40 @@
+要求分析：(Requirement Analysis)                                                              
+製品分析の専門家が要件を特定する。 
+システム機能要件は、要件分析チームによって理解される。
+このフェーズは重要な役割を果たす。
+
+(Yōkyū bunseki: Seihin bunseki no senmonka ga yōken o tokutei suru. Shisutemu kinō yōken wa, yōken bunseki chīmu ni yotte rikai sa reru. Kono fēzu wa jūyōna yakuwariwohatasu)
+
+Các chuyên gia phân tích sản phẩm (product analysiss) sẽ xác định các yêu cầu.
+Các yêu cầu chức năng của hệ thống được nhóm phân tích làm rõ.
+Giai đoạn này đóng một vai trò quan trọng.
+
+設計と開発：(Design & Development)
+開発チームは、システムのコア機能を構築することから始めます。
+コア機能を独立して構築する。
+新しい機能を段階的に追加する。
+新機能は順次追加されます。
+
+(Sekkei to kaihatsu: Kaihatsu chīmu wa, shisutemu no koa kinō o kōchiku suru koto kara hajimemasu. Koa kinō o dokuritsu shite kōchiku suru. Atarashī kinō o dankai-teki ni tsuika suru. Shin kinō wa junji tsuika sa remasu.)
+
+Nhóm phát triển bắt đầu bằng việc xây dựng chức năng cốt lõi của hệ thống.
+Xây dựng chức năng cốt lõi một cách độc lập.
+Thêm các tính năng mới dần dần.
+Các tính năng mới sẽ được bổ sung tuần tự.
+
+
+デプロイとテスト：(Deployment and Testing:)
+要件をバージョンに分割する (最初のバージョンから）。
+各インクリメントが構築され、顧客側で展開される。。
+製品は、モデルのプロセスとの整合性を確認するためのテストを受けます。
+
+(Yōken o bājon ni bunkatsu suru. (Saisho no bājon kara). Kaku inkurimento ga kōchiku sa re, kokyaku-gawa de tenkai sa reru. Seihin wa, yōken to no seigō-sei o kakunin suru tame ni tesuto sa remasu.)
+
+Dựa vào yêu cầu để chia thành các phiên bản. (Bắt đầu từ phiên bản đầu tiên).
+Mỗi bản cập nhật được xây dựng và triển khai tại địa điểm của khách hàng.
+Sản phẩm trải qua quá trình thử nghiệm để đảm bảo yêu cầu
+
+実装：(Implementation)
+最新の安定したバージョンを顧客へ配備する。
+Saishin no antei shita bājon o kokyaku e haibi suru.
+Giao phiên bản hoàn chỉnh tốt nhất hiện tại cho khách hàng
