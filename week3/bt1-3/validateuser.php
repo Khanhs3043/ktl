@@ -36,7 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit(); // Kết thúc kịch bản PHP
     } else {
         // Đăng nhập thất bại
-        header("Location: login.html?error=invalid_credentials"); // Chuyển hướng đến trang login.htm
+        header("Location: login.html?error=invalid_credentials"); 
+        echo "Nhập sai mật khẩu hoặc password"
+        // Chuyển hướng đến trang login.htm
         exit(); // Kết thúc kịch bản PHP
     }
 
