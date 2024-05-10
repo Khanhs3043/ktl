@@ -1,45 +1,50 @@
 <?php
-$servername = "localhost";
-$username = "root"; 
-$password = ""; 
-$database = "pnk_s"; 
 
-$conn = new mysqli($servername, $username, $password, $database);
+$uri = "mysql://avnadmin:AVNS_48P_BWZnfOzMQ-6-e5i@mysql-ea911ca-tuyenleloi239-0168.l.aivencloud.com:23298/defaultdb?ssl-mode=REQUIRED";
 
-if ($conn->connect_error) {
-    die("Kết nối không thành công: " . $conn->connect_error);
+$fields = parse_url($uri);
+
+// build the DSN including SSL settings
+$conn = "mysql:";
+$conn .= "host=" . $fields["host"];
+$conn .= ";port=" . $fields["port"];;
+$conn .= ";dbname=QUANLYSACH";
+$conn .= ";sslmode=verify-ca;sslrootcert=ca.pem";
+
+try {
+  $db = new PDO($conn, $fields["user"], $fields["pass"]);
+
+  $stmt = $db->query("SELECT VERSION()");
+  print($stmt->fetch()[0]);
+} catch (Exception $e) {
+  echo "Error: " . $e->getMessage();
 }
 
-$sql = "SELECT sinhvien.MSSV, sinhvien.HoTen, monhoc.TenMH, dangky.Ky
-        FROM sinhvien
-        INNER JOIN dangky ON sinhvien.MSSV = dangky.MSSV
-        INNER JOIN monhoc ON dangky.MaMH = monhoc.MaMH";
-$result = $conn->query($sql);
+$sql = "CREATE TABLE if not exist Sach(
+  maSach varchar(100) PRIMARY KEY,
+  tenSach varchar(100),
+  soLuong int
+)
 
-if ($result->num_rows > 0) {
-    
-    echo "<h2 style='text-align: center;'>Danh Sách Đăng Ký Học</h2>";
-    
-    
-    echo "<table border='1' align='center' style='width: 80%; height: 15%; text-align: center'>
-            <tr>
-                <th style='width: 15%;'>MSSV</th>
-                <th style='width: 35%;'>Họ và tên</th>
-                <th style='width: 35%;'>Tên môn học</th>
-                <th style='width: 15%;'>Kỳ</th>
-            </tr>";
-    while($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td>".$row["MSSV"]."</td>
-                <td>".$row["HoTen"]."</td>
-                <td>".$row["TenMH"]."</td>
-                <td>".$row["Ky"]."</td>
-              </tr>";
-    }
-    echo "</table>";
-} else {
-    echo "Không có dữ liệu";
-}
+CREATE TABLE if not exist User(
+  maUser varchar(100) PRIMARY KEY,
+  tenUser varchar(100),
+  matkhau int
+)";
 
-$conn->close();
-?>
+$sql2 = "INSERT INTO User (maUser, tenUser, matkhau) VALUES
+('K151','Nguyen A','user123'),
+('K152','LeA','ad123'),
+('K143','LeB','ad321'),
+('K168','Bao','us231'),
+('K186','Anh','admin897')
+";
+
+$sql2 = "INSERT INTO Sach (maSach, tenSach, soLuong) VALUES
+('H1','Happy Life',5),
+('A1','ABC',10),
+('H2','Harry Potter',10),
+('A2','Annavle',15),
+('B1','Bookstore',10)
+";
+
