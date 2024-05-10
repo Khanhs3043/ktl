@@ -1,6 +1,7 @@
 <?php
 $pass = getenv('aivenPass');
-$uri = "mysql://avnadmin:$pass@mysql-001-xuankhanh3043-p1.h.aivencloud.com:13807/quanlysach?ssl-mode=REQUIRED";
+echo $pass;
+$uri = "mysql://avnadmin:AVNS_l5GJlzfCXS6lfLUWt-D@mysql-001-xuankhanh3043-p1.h.aivencloud.com:13807/quanlysach?ssl-mode=REQUIRED";
 
 $fields = parse_url($uri);
 
