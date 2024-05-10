@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 header('Location: ../Controller/sach.php');
                 exit;
             } else {
-                echo "Thông tin đăng nhập không hợp lệ?";
+                $_SESSION['isLogin'] = false;
             }   
     }
 ?>
