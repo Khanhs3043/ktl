@@ -1,0 +1,99 @@
+.login{
+    height: 300px;
+    width: 400px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: rgb(235, 233, 233);
+    border-radius: 20px;
+    box-shadow:  0px 0px 10px 5px rgba(128, 128, 128, 0.127);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+    font-weight: 600;
+}
+.title1{
+    margin-top: 30px;
+    color: rgb(33, 79, 110);
+    text-align: center;
+}
+.input{
+    height: 40%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.in{
+  
+    height: 50px;
+    width: 300px;
+    background-color: white;
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 0px 10px;
+    border: none;
+}
+.loginBtn{
+    height: 50px;
+    width: 60%;
+    border: none;
+    background-color: rgb(166, 226, 226);
+    border-radius: 30px; 
+    font-size: 17px;
+    font-weight: 500;
+    color: white;
+}
+.loginBtn:hover{
+    background-color: rgb(181, 227, 227);
+   
+}
+.noti{
+    font-size: 40px;
+    font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+.con{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+}
+.logoutBtn{
+    height: 40px;
+    width: 150px;
+    font-size: 17px;
+    color: white;
+    background-color: rgb(213, 103, 103);
+    border: none;
+    border-radius: 30px;
+}
+.logoutBtn:hover{
+    border: 3px solid rgb(177, 177, 177);
+}
+.tbl{
+    min-width: 800px;
+    margin: auto;
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    font-family: arial;
+    font-weight: 300;
+    font-size: 16px;
+    padding: 7px;
+    text-align: left;
+}
+th{
+    background-color: rgb(208, 230, 237);
+    font-weight: 600;
+}

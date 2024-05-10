@@ -25,7 +25,7 @@
                 if($_POST['username']==$row["username"] && $_POST['password']==$row["password"])
                 {   
                     $_SESSION['isLogin'] = true;
-                    header('Location: logout.php');
+                    header('Location: sach.php');
                     exit;
                 } else {
                     echo "Thông tin đăng nhập không hợp lệ?";
