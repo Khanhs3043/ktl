@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 5%;
+    background-color: #fff;
+}
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s; /* Thêm hiệu ứng chuyển đổi màu viền */
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: transparent; /* Loại bỏ viền */
+    outline: none; /* Loại bỏ viền mặc định khi tập trung */
+    box-shadow: 0 0 5px 5px rgba(245, 0, 87, 0.5);
+}
+
+input[type="submit"] {
+    background-color: #f50057; /* Màu nút đăng nhập */
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 0px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Thêm hiệu ứng chuyển đổi màu nút */
+}
+input[type="submit"]:hover {
+    background-color: #c51162; /* Màu nút đăng nhập khi hover */
+}
+.forgot-password {
+    text-align: center;
+    margin-top: 10px;
+}
+.forgot-password a {
+    color: #f50057; /* Màu link quên mật khẩu */
+    text-decoration: none;
+}
+.login-with-social {
+    text-align: center;
+    margin-top: 20px;
+}
+.login-with-social .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:#1877f2; /* Màu nút đăng nhập bằng Facebook và Google */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+.login-with-social .btn:hover {
+    background-color: rgba(24, 119, 242, 0.5); /* Màu nút đăng nhập bằng Facebook và Google khi hover */
+}
+.noti{
+    font-size: 40px;
+    font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+.con{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+}
+.logoutBtn{
+    height: 40px;
+    width: 150px;
+    font-size: 17px;
+    color: white;
+    background-color: rgb(213, 103, 103);
+    border: none;
+    border-radius: 30px;
+}
+.logoutBtn:hover{
+    border: 3px solid rgb(177, 177, 177);
+}
