@@ -1,12 +1,12 @@
 <?php
 session_start();
-require '/index.php';
+require 'KtraGK/dbconnect.php';
 
 if (!isset($_SESSION['isLogin'])) {
     $_SESSION['isLogin'] = false;
 }
 if($_SESSION['isLogin'] == false) {
-    header('Location: ../View/Login.html');
+    header('Location: KtraGK/Dangnhap.html');
 }else header('Location: sach.php');
 
 if($_SERVER["REQUEST_METHOD"] == "POST") { 
@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $db->query("SELECT * FROM User where tenUser = '$username' and MatKhau = '$pass'");
     if($result->rowCount() >= 1) {
                 $_SESSION['isLogin'] = true;
-                header('Location: ../Controller/sach.php');
+                header('Location: sach.php');
                 exit;
             } else {
                 $_SESSION['isLogin'] = false;
