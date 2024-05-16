@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class newct extends Controller
 {
     public function index (){
-        $name = "Nguyen Thi Quynh Trang";
+        $name = "Hello Word";
         return view('HW', compact('name'));
     }
 }
