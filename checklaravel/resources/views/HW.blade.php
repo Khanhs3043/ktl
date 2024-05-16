@@ -7,9 +7,14 @@
 </head>
 <body>
     <h1 class="s">Hello Word</h1>
-    <h1 ><?php echo $name ?></h1>
+    <h1 class="t"><?php echo $name ?></h1>
     <h1>{{$name}}</h1>
     <style>
+        .t{
+            color:red;
+            text-align: center;
+            font-size: 50px;
+        }
         .s{
             color:green;
             text-align: center;
