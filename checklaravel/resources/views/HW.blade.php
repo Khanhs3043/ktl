@@ -6,16 +6,15 @@
     <title>HelloWordLaravel</title>
 </head>
 <body>
-    <h1 class="s">Hello Word</h1>
     <h1 class="t"><?php echo $name ?></h1>
-    <h1>{{$name}}</h1>
+    <h1 class="s">Hello Word từ View</h1>
     <style>
-        .t{
+        .s{
             color:red;
             text-align: center;
             font-size: 50px;
         }
-        .s{
+        .t{
             color:green;
             text-align: center;
             font-size: 90px;
