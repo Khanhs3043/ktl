@@ -1,0 +1,153 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+p{
+    width: fit-content;
+}
+.header{
+    width: 100%;
+    background-color: rgb(226, 244, 238);
+    padding-top: 30px;
+}
+.header-top{
+    padding: 0px 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.header-bottom{
+    background-color: rgb(172, 225, 225);
+    padding: 15px 0px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.header-bottom a{
+    padding: 15px 20px;
+}
+.header-bottom a:hover{
+    background-color: rgb(165, 208, 208);
+    transition: 0.4s;
+    color: rgb(255, 255, 255);
+}
+.logo{
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+.logo p{
+    margin-left: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(109, 111, 112);
+}
+.logo i{
+    color: rgb(156, 236, 237);
+    font-size: 80px;
+}
+.logout i{
+    font-size: 30px;
+    margin-left: 20px;
+    color: rgb(77, 212, 212);
+}
+.avatar{
+    width: 50px;
+    height: 50px;
+    background-color: bisque;
+    border-radius: 30px;
+    border: 1px solid black;
+    margin-right: 10px;
+
+}
+.title1{
+    margin: auto;
+    margin-bottom: 50px;
+}
+.wrap-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    background-color: aliceblue;
+    padding: 30px 50px;
+    width: fit-content;
+    min-width: 500px;
+    margin: auto;
+}
+.wrap1{
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    width: fit-content;
+    border-radius: 20px;
+}
+.label1{
+    margin-top: 20px;
+    display: flex;
+}
+.kwh{
+    background-color: transparent;
+    margin-left: 20px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    text-align: center;
+}
+.mform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.calc-btn{
+    margin: auto;
+    margin-top: 50px;
+    width: fit-content;
+    padding: 10px 40px;
+    border-radius: 10px;
+    background-color: aquamarine;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.calc-btn:hover{
+    transition: 0.4s;
+    background-color: aqua;
+}
+.result{
+    margin: 50px 0px 30px;
+}
+.main-title{
+    color: palevioletred;
+    font-weight: bold;
+}
+.result-tbl{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+    width: 600px;
+    min-width: 300px;
+}
+.td1{
+    text-align: start;
+}
+td {
+    text-align: center;
+    padding: 5px 10px;
+}
+.final{
+    margin: 30px 0px 20px;
+}
+.wrap2{
+    display: flex;
+}
+.wrap2 p{
+    margin: 5px 0px;
+}
+.right{
+    margin-left: 50px;
+}
