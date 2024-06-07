@@ -4,7 +4,7 @@ namespace App\Http\Controllers\web;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class GoogleAuthController extends Controller
 {
 
@@ -17,9 +17,17 @@ class GoogleAuthController extends Controller
     {
         $user = Socialite::driver('google')->user();
 
-        // Xử lý thông tin người dùng và tạo token
+        return response()->json($user);
+    }
 
-        return response()->json(['user' => $user]);
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return View('log.login');
     }
 
 }
