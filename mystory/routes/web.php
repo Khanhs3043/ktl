@@ -3,7 +3,7 @@
 use App\Http\Controllers\web\ProfileController;
 use App\Http\Controllers\web\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
+// use Laravel\Socialite\Facades\Socialite;
 
 Route::get('profile',[ProfileController::class,'index']);
 Route::get('/', function () {
