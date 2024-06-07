@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->string('name');
+            $table->string('username')->unique();
             $table->string('avatar');
             $table->date('dob');
             $table->text('bio');
             $table->string('gender');
+            $table->unsignedBigInteger('uid');
+            $table->foreign('uid')->references('id')->on('users')->onDelete('cascade');
             $table->id();
             $table->timestamps();
         });
@@ -30,11 +32,11 @@ return new class extends Migration
         });
 
         Schema::create('friends', function (Blueprint $table) {
-            $table->unsignedBigInteger('group_id');
+            $table->unsignedBigInteger('friend_id');
             $table->unsignedBigInteger('uid');
             $table->id();
             $table->timestamps();
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->foreign('friend_id')->references('id')->on('friends')->onDelete('cascade');
             $table->foreign('uid')->references('id')->on('users')->onDelete('cascade');
         });
         

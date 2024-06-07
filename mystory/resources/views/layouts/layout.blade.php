@@ -3,28 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>Mystory</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css'>
   <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <div id="nav-bar">
   <input id="nav-toggle" type="checkbox"/>
-  <div id="nav-header"><a id="nav-title" href="https://codepen.io" target="_blank">C<i class="fab fa-codepen"></i>DEPEN</a>
+  <div id="nav-header"><a id="nav-title" href="#" target="_blank">MyStory</a>
     <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
     <hr/>
   </div>
   <div id="nav-content">
-    <div class="nav-button"><i class="fas fa-palette"></i><span>Your Work</span></div>
-    <div class="nav-button"><i class="fas fa-images"></i><span>Assets</span></div>
-    <div class="nav-button"><i class="fas fa-thumbtack"></i><span>Pinned Items</span></div>
+ 
+    <a href = '/home' class="nav-button"><div class="nav-button"><i class="fas fa-home"></i><span>Home</span></div></a>
+    <a href = '/groups' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-users-line"></i><span>Groups</span></div></a>
+    <a href = '/friends' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-user-group"></i><span>Friends</span></div></a>
     <hr/>
-    <div class="nav-button"><i class="fas fa-heart"></i><span>Following</span></div>
-    <div class="nav-button"><i class="fas fa-chart-line"></i><span>Trending</span></div>
-    <div class="nav-button"><i class="fas fa-fire"></i><span>Challenges</span></div>
-    <div class="nav-button"><i class="fas fa-magic"></i><span>Spark</span></div>
+
+    <a href = '/search' class="nav-button"><div class="nav-button"><i class="fas fa-search"></i><span>Sreach</span></div></a>
+    <a href = '/tasks' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-list-check"></i><span>Tasks</span></div></a>
+    <a href = '/appointments' class="nav-button"><div class="nav-button"><i class="fas fa-regular fa-calendar-check"></i><span>Appointments</span></div></a>
+    
     <hr/>
-    <div class="nav-button"><i class="fas fa-gem"></i><span>Codepen Pro</span></div>
+    <a href = '/chats' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-comments"></i><span>Chats</span></div></a>
+    <a href = '/friend_requests' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-envelope"></i><span>Friend requests</span></div></a>
+    <a href = '/settings' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-gear"></i><span>Setting</span></div></a>
     <div id="nav-content-highlight"></div>
   </div>
   <input id="nav-footer-toggle" type="checkbox"/>
