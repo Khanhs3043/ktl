@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         Profile::create([
             'uid' => $user->id,
             'username' => 'Khanhs3043',
-            'avatar' => 'path/to/avatar.jpg',
+            'avatar' => 'https://pixlr.com/images/index/ai-image-generator-one.webp',
             'dob' => '2003-01-01',
             'bio' => 'This is a bio',
             'gender' => 'Male',
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         Profile::create([
             'uid' => $user1->id,
             'username' => 'Trangggg',
-            'avatar' => 'path/to/avatar.jpg',
+            'avatar' => 'https://pixlr.com/images/index/ai-image-generator-two.webp',
             'dob' => '2003-04-24',
             'bio' => 'This is a bio',
             'gender' => 'Male',
@@ -52,9 +52,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Profile::create([
-            'uid' => $user1->id,
+            'uid' => $user2->id,
             'username' => 'LinLin',
-            'avatar' => 'path/to/avatar.jpg',
+            'avatar' => 'https://letsenhance.io/static/66c1b6abf8f7cf44c19185254d7adb0c/28ebd/AiArtBefore.jpg',
             'dob' => '2003-01-31',
             'bio' => 'This is a bio',
             'gender' => 'Female',

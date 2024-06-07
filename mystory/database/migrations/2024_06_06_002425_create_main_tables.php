@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('dob');
             $table->text('bio');
             $table->string('gender');
-            $table->unsignedBigInteger('uid');
+            $table->unsignedBigInteger('uid')->unique();
             $table->foreign('uid')->references('id')->on('users')->onDelete('cascade');
             $table->id();
             $table->timestamps();
@@ -49,7 +49,7 @@ return new class extends Migration
             $table->foreign('uid')->references('id')->on('users')->onDelete('cascade');
         });
 
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->unsignedBigInteger('uid');
             $table->string('title');
             $table->text('content');
@@ -75,7 +75,7 @@ return new class extends Migration
         Schema::create('friend_requests', function (Blueprint $table) {
             $table->unsignedBigInteger('sender_id');
             $table->unsignedBigInteger('receiver_id');
-            $table->string('status');
+            $table->string('status');// pending, accepted, rejected
             $table->id();
             $table->timestamps();            
             $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');

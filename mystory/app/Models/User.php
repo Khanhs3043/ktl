@@ -15,6 +15,21 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class,'uid');
     }
+    public function post()
+    {
+        return $this->hasMany(Post::class,'uid');
+    }
+    public function friend()
+    {
+        return $this->hasMany(Friend::class,'uid');
+    }
+
+    public function frequest()
+    {
+        return $this->hasMany(FRequest::class,'uid');
+    }
+
+    
     /**
      * The attributes that are mass assignable.
      *
