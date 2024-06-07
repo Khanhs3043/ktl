@@ -19,16 +19,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class,'uid');
     }
-    public function friend()
-    {
-        return $this->hasMany(Friend::class,'uid');
-    }
 
     public function frequest()
     {
         return $this->hasMany(FRequest::class,'uid');
     }
 
+    public function friends()
+    {
+        return $this->belongsToMany(User::class, 'friend_requests',  'sender_id', 'receiver_id')
+            ->wherePivot('status', 'accepted')
+            ->withTimestamps();
+    }
     
     /**
      * The attributes that are mass assignable.

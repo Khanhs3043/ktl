@@ -26,7 +26,7 @@ class GoogleAuthController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
+        
         return View('log.login');
     }
 
