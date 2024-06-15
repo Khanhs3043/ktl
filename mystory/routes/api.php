@@ -15,9 +15,11 @@ Route::put('profile/{id}', [ProfileController::class, 'updateUserProfile']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('friend-request/{uid}', [FRequestController::class, 'sendRequest']);
-    Route::put('friend-request/respond', [FRequestController::class, 'respondRequest']);
+    Route::put('friend-request/respond/{id}', [FRequestController::class, 'respondRequest']);
     Route::get('friend-requests/{uid}', [FRequestController::class, 'getRequests']);
-    Route::get('friends/{uid}', [FriendController::class, 'getFriends']);
+    Route::get('friends', [FriendController::class, 'getFriends']);
+    Route::get('search-users', [FriendController::class, 'searchUsers']);
+    Route::get('search-friends/{userId}', [FriendController::class, 'searchFriends']);
 });
 
 Route::post('register', [AuthController::class, 'register']);

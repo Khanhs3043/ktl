@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FRequest;
 use App\Models\Friend;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
 class FRequestController extends Controller
 {
@@ -31,23 +32,26 @@ class FRequestController extends Controller
 
         return response()->json(['message' => 'Friend request sent successfully'], 201);
     }
-    public function respondRequest(Request $request)
+
+    public function respondRequest(Request $request,$id)
     {
-        $request->validate([
-            'status' => 'required|in:accepted,rejected',
-        ]);
-        $uid = $request->input('sender_id');
-        $friendid = $request->input('receiver_id');
-        $friendRequest = FRequest::where('receiver_id', $friendid)->where('sender_id', $uid)->first();
+        try{
+            $request->validate([
+                'status' => 'required|in:accepted,rejected',
+            ]);
+            $friendRequest = FRequest::where('id', $id)->first();
 
-        if (!$friendRequest) {
-            return response()->json(['message' => 'Friend request not found'], 404);
+            if (!$friendRequest) {
+                return response()->json(['message' => 'Friend request not found'], 404);
+            }
+
+            $friendRequest->status = $request->status;
+            $friendRequest->save();
+
+            return response()->json(['message' => 'Friend request ' . $request->status . ' successfully']);
+        }catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
         }
-
-        $friendRequest->status = $request->status;
-        $friendRequest->save();
-
-        return response()->json(['message' => 'Friend request ' . $request->status . ' successfully']);
     }
 
     public function getRequests($uid) // lấy những lời mời kết bạn được gửi tới 
