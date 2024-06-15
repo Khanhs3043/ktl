@@ -21,4 +21,10 @@ class Group extends Model
     {
         return $this->belongsTo(User::class, 'creator_id');
     }
+    
+    public function members()
+    {
+        return $this->belongsToMany(User::class, 'user_groups', 'group_id', 'uid')
+                    ->withTimestamps();
+    }
 }

@@ -58,12 +58,23 @@ class GroupController extends Controller
     }
 
     public function myGroups(){
-        $user =Auth::user(); // Hoặc nếu đang xử lý cho người dùng hiện tại
+        $user =Auth::user(); 
 
         $createdGroups = $user->createdGroups()->get();
 
         // Lấy danh sách các nhóm đã tạo và trả về kết quả
         return response()->json(['created_groups' => $createdGroups]);
 
+    }
+    public function groupUsers($groupId){
+        // $user =Auth::user(); 
+        $group = Group::find($groupId);
+
+        if (!$group) {
+            return response()->json(['message' => 'Group not found'], 404);
+        }
+        // Lấy danh sách thành viên của nhóm
+        $members = $group->members()->get();
+        return response()->json(['members' => $members]);
     }
 }

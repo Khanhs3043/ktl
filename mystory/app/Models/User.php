@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Group::class, 'user_groups', 'uid', 'group_id')
                     ->withTimestamps();
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'uid' );
+    }
     /**
      * The attributes that are mass assignable.
      *

@@ -28,6 +28,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('groups/{groupId}/add-user', [GroupController::class, 'addUserToGroup']);
     Route::get('groups', [GroupController::class, 'getGroups']);
     Route::get('mygroups', [GroupController::class, 'myGroups']);
+    Route::get('groupusers/{groupId}', [GroupController::class, 'groupUsers']);
+    //post
+    
+    Route::get('myPosts', [PostController::class, 'getAllMyPosts']);
+    Route::post('posts/create', [PostController::class, 'store']);
+    Route::post('posts/delete/{id}', [PostController::class, 'delete']);
+    Route::put('posts/update/{id}', [PostController::class, 'update']);
 });
 
 Route::post('register', [AuthController::class, 'register']);

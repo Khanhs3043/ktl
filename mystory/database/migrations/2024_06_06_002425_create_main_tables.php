@@ -47,7 +47,7 @@ return new class extends Migration
             $table->unsignedBigInteger('uid');
             $table->string('title');
             $table->text('content');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->id();
             $table->timestamps();
             
