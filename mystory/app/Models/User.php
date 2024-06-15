@@ -31,7 +31,17 @@ class User extends Authenticatable
             ->wherePivot('status', 'accepted')
             ->withTimestamps();
     }
+
+    public function createdGroups()
+    {
+        return $this->hasMany(Group::class, 'creator_id');
+    }
     
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'user_groups', 'uid', 'group_id')
+                    ->withTimestamps();
+    }
     /**
      * The attributes that are mass assignable.
      *

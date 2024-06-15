@@ -23,13 +23,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('groups', function (Blueprint $table) {
-            $table->string('name');
-            $table->unsignedBigInteger('creator_id');
-            $table->id();
-            $table->timestamps();
-            $table->foreign('creator_id')->references('id')->on('users')->onDelete('cascade');
-        });
+        
 
         Schema::create('friends', function (Blueprint $table) {
             $table->unsignedBigInteger('friend_id');
