@@ -6,34 +6,31 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FRequest;
 use App\Models\Friend;
+use Illuminate\Support\Facades\Auth;
 class FRequestController extends Controller
 {
-    public function sendRequest(Request $request)
+    public function sendRequest($uid)
     {
-        $request->validate([
-            'sender_id' => 'required|exists:users,id',
-            'receiver_id' => 'required|exists:users,id',
-        ]);
+        $sender_id = Auth::id(); // Lấy id của người dùng đã đăng nhập
 
         // Kiểm tra xem đã gửi yêu cầu trước đó chưa
-        $existingRequest = FRequest::where('sender_id', $request->sender_id)
-                                         ->where('receiver_id', $request->receiver_id)
-                                         ->first();
+        $existingRequest = FRequest::where('sender_id', $sender_id)
+                                        ->where('receiver_id', $uid)
+                                        ->first();
 
         if ($existingRequest) {
             return response()->json(['message' => 'Friend request already sent'], 409);
         }
 
         // Tạo mới yêu cầu kết bạn
-        $friendRequest = new FRequest();
-        $friendRequest->sender_id = $request->sender_id;
-        $friendRequest->receiver_id = $request->receiver_id;
-        $friendRequest->status = 'pending';
-        $friendRequest->save();
+        FRequest::create([
+            'sender_id' => $sender_id,
+            'receiver_id' => $uid,
+            'status' => 'pending',
+        ]);
 
         return response()->json(['message' => 'Friend request sent successfully'], 201);
     }
-
     public function respondRequest(Request $request)
     {
         $request->validate([

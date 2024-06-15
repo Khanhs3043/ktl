@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\web\ProfileController;
-use App\Http\Controllers\web\GoogleAuthController;
+use App\Http\Controllers\web\AuthController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -27,6 +27,7 @@ Route::get('settings', function () {
     return view('main.setting');
 });
 
-Route::get('auth/google', [GoogleAuthController::class, 'redirectToGoogle']);
-Route::get('auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
-Route::get('/logout', [GoogleAuthController::class, 'logout'])->name('logout');
+Route::get('auth/{provider}', [AuthController::class, 'redirectToProvider']);
+Route::get('auth/{provider}/callback', [AuthController::class, 'handleProviderCallback']);
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
