@@ -44,15 +44,22 @@ class User extends Authenticatable
         return $this->hasMany(Post::class, 'uid' );
     }
 
+    public function appointmentsAsDater() // cuộc hẹn mà mình là người mời
+    {
+        return $this->hasMany(Appointment::class, 'dater_id');
+    }
+
+    public function appointmentsAsDateee() // cuộc hẹn mà mình là người được mời
+    {
+        return $this->hasMany(Appointment::class, 'dateee_id');
+    }
+
     public function tasks()
     {
         return $this->hasMany(Task::class, 'uid' );
     }
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    
+
     protected $fillable = [
         'name',
         'email',

@@ -59,8 +59,8 @@ return new class extends Migration
             $table->string('title');
             $table->text('des');
             $table->string('status')->default('unfinished');
-            $table->timestamp('due_date')->nullable();;
-            $table->unsignedBigInteger('assign_to')->nullable();;
+            $table->timestamp('due_date')->nullable();
+            $table->unsignedBigInteger('assign_to')->nullable();
             $table->id();
             $table->timestamps();            
             $table->foreign('uid')->references('id')->on('users')->onDelete('cascade');

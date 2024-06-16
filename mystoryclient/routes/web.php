@@ -1,17 +1,9 @@
 <?php
 
 use App\Http\Controllers\web\ProfileController;
-use App\Http\Controllers\web\AuthController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
-
-//auth
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
-Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-Route::get('login/{provider}', [AuthController::class, 'redirectToProvider']);
-Route::get('callback/{provider}', [AuthController::class, 'handleProviderCallback']);
-
 
 Route::get('profile',[ProfileController::class,'index']);
 Route::get('/', function () {
@@ -29,7 +21,8 @@ Route::get('home', function () {
     return view('main.home',compact('user'));
 });
 Route::get('friends', function () {
-    return view('main.friend');})->name('friends');
+    return view('main.friend');
+});
 
 Route::get('groups', function () {
     return view('main.group');

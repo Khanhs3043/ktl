@@ -9,6 +9,7 @@ use App\Http\Controllers\api\FriendController;
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\GroupController;
 use App\Http\Controllers\api\TaskController;
+use App\Http\Controllers\api\AppointmentController;
 
 Route::get('profile/{id?}', [ProfileController::class, 'getAllUserData']);
 Route::get('posts/{uid?}', [PostController::class, 'getAllPostOfUser']);
@@ -44,6 +45,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('tasks/create', [TaskController::class, 'store']);
     Route::put('tasks/update/{taskId}', [TaskController::class, 'update']);
     Route::post('tasks/delete/{taskId}', [TaskController::class, 'delete']);
+
+    //appointment
+    Route::get('appointments', [AppointmentController::class, 'appointments']);
+    Route::post('appointments/create', [AppointmentController::class, 'store']);
+    Route::get('appointments/{id}', [AppointmentController::class, 'show']);
+    Route::put('appointments/update/{id}', [AppointmentController::class, 'update']);
+    Route::post('appointments/delete/{id}', [AppointmentController::class, 'delete']);
 });
 
 Route::post('register', [AuthController::class, 'register']);
