@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class FriendController extends Controller
 {
-    public function getFriends()
+    public function getFriends() //lấy tất cả bạn bè của người dùng hiện tại
     {
         $uid = Auth::user()->id;
         $user = User::with('friends')->find($uid);
@@ -20,7 +20,7 @@ class FriendController extends Controller
         }
         return response()->json($user->friends);
     }
-    public function searchUsers(Request $request)
+    public function searchUsers(Request $request) // tìm kiếm một người dùng
     {
         $request->validate([
             'query' => 'required|string|min:1',
@@ -35,7 +35,7 @@ class FriendController extends Controller
 
         return response()->json($users);
     }
-    public function searchFriends(Request $request, $userId)
+    public function searchFriends(Request $request, $userId) // tìm kiếm bạn bè của người dùng cụ thể
     {
         $request->validate([
             'query' => 'required|string|min:1',

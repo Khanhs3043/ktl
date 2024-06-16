@@ -47,6 +47,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class, 'uid' );
     }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'uid' );
+    }
     /**
      * The attributes that are mass assignable.
      *

@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-    public function getAllMyPosts()
+    public function getAllMyPosts() // lấy tất cả các bài viết của người dùng hiện tại
     {
         $posts = Auth::user()->posts()->get();
         return response()->json(['posts' => $posts], 200);
     }
-    public function getAllPostOfUser($uid){
+    public function getAllPostOfUser($uid){ // lấy tất cả bài viết của người dùng cụ thể
         $posts = Post::all()->where('uid',$uid);
 
         if (!$posts) {
