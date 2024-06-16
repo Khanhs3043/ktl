@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Http\Controllers\web;
-use Laravel\Socialite\Facades\Socialite;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
+
 class AuthController extends Controller
 {
-
     public function register(Request $request)
     {
         try {
@@ -21,63 +22,60 @@ class AuthController extends Controller
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8|confirmed',
             ]);
-    
+
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
-            
-            // Create profile for the user
+
             $profile = Profile::create([
                 'uid' => $user->id,
-                'username' => $user->name,
-                'avatar' => null,
-                'dob' => null,
-                'bio' => null,
-                'gender' => null,
-            ]);
-    
-            // Optionally, you can login the user after registration
-            // Auth::login($user);
-    
-            // Return a view or redirect to a route
-            // Example: Redirect to a dashboard route after registration
-            return redirect()->route('dashboard')->with('success', 'Registration successful!');
+                'username' => $user->name, // Example: Use name as username
+                'avatar' => null, // You can set a default avatar or handle it separately
+                'dob' => null,//$socialUser->getDateOfBirth(), // Example: Date of birth
+                'bio' => null, // Example: Biography
+                'gender' => null, // Example: Gender
+            ]);      
+
+            Auth::login($user);
+
+            return redirect()->route('home');
         } catch (ValidationException $e) {
-            // Handle validation errors
             return redirect()->back()->withErrors($e->errors())->withInput();
         }
     }
+
     public function login(Request $request)
     {
-    try {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required|string',
-        ], [
-            'email.required' => 'Email is required.',
-            'email.email' => 'Invalid email format.',
-            'password.required' => 'Password is required.',
-        ]);
+        try {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email',
+                'password' => 'required|string',
+            ], [
+                'email.required' => 'Email is required.',
+                'email.email' => 'Invalid email format.',
+                'password.required' => 'Password is required.',
+            ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator->errors())->withInput();
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            if (!Auth::attempt($request->only('email', 'password'))) {
+                return redirect()->back()->withErrors(['password' => 'Incorrect email or password.'])->withInput();
+            }
+
+            return redirect()->route('home');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput();
         }
-
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->back()->withErrors(['password' => 'Incorrect email or password.'])->withInput();
-        }
-
-        // Optionally, you can login the user
-        // $user = Auth::user();
-        // Auth::login($user);
-
-        // Redirect to a dashboard route after successful login
-        return redirect()->route('friends')->with('success', 'Login successful!');
-    } catch (ValidationException $e) {
-        return redirect()->back()->withErrors($e->errors())->withInput();
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout(); 
+        return redirect()->route('login');
     }
 
     public function redirectToProvider($provider)
@@ -99,11 +97,8 @@ class AuthController extends Controller
                     ->first();
 
         if ($user) {
-            // Optionally, you can login the user
-            // Auth::login($user);
-
-            // Redirect to a dashboard route after login
-            return redirect()->route('dashboard')->with('success', 'Login successful!');
+            Auth::login($user);
+            return redirect()->route('home');
         }
 
         // Check if the user exists by email
@@ -122,22 +117,18 @@ class AuthController extends Controller
                 'password' => '', // Empty password for OAuth users
             ]);
 
-            // Create profile for the user
-            $profile = Profile::create([
+            Profile::create([
                 'uid' => $user->id,
-                'username' => $socialUser->getName(),
-                'avatar' => $socialUser->getAvatar(),
+                'username' => $socialUser->getName(), 
+                'avatar' => $socialUser->getAvatar(), 
                 'dob' => null,
-                'bio' => null,
-                'gender' => null,
+                'bio' => null, 
+                'gender' => null, 
             ]);
         }
-        
-        // Optionally, you can login the user
-        // Auth::login($user);
 
-        // Redirect to a dashboard route after successful login
-        return redirect()->route('dashboard')->with('success', 'Login successful!');
+        Auth::login($user);
+
+        return redirect()->route('home');
     }
-
 }

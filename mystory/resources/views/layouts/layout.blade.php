@@ -11,7 +11,11 @@
 <div id="nav-bar">
   <input id="nav-toggle" type="checkbox"/>
   <div id="nav-header"><a id="nav-title" href="#" target="_blank">MyStory</a>
-    <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
+    <!-- <label for="nav-toggle"><span id="nav-toggle-burger"></span></label> -->
+    <form  action = "/logout" method="post">
+      @csrf
+      <button class="logout-button"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </form>
     <hr/>
   </div>
   <div id="nav-content">
@@ -26,9 +30,10 @@
     <a href = '/appointments' class="nav-button"><div class="nav-button"><i class="fas fa-regular fa-calendar-check"></i><span>Appointments</span></div></a>
     
     <hr/>
-    <a href = '/chats' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-comments"></i><span>Chats</span></div></a>
     <a href = '/friend_requests' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-envelope"></i><span>Friend requests</span></div></a>
     <a href = '/settings' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-gear"></i><span>Setting</span></div></a>
+    
+    <!-- <form  action = "/logout" method="post"><button class="nav-button"><i class="fas fa-solid fa-comments"></i><span>Log out</span></button></form> -->
     <div id="nav-content-highlight"></div>
   </div>
   <input id="nav-footer-toggle" type="checkbox"/>

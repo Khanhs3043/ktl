@@ -97,6 +97,7 @@
     border-radius: 16px;
     z-index: 2;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     transition: width 0.2s;
   }
@@ -356,4 +357,18 @@
     display:flex;
     flex-direction: column;
     align-items: center;
+}
+.logout-button{
+  margin-right: 20px;
+  background-color: transparent;
+  border:none;
+  font-size: 30px;
+  float:right;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.logout-button:hover{
+  color: #D62929;
+  transition: 0.3s;
 }

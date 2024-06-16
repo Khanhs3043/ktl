@@ -8,26 +8,30 @@ use Laravel\Socialite\Facades\Socialite;
 //auth
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+// Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('login/{provider}', [AuthController::class, 'redirectToProvider']);
 Route::get('callback/{provider}', [AuthController::class, 'handleProviderCallback']);
-
-
-Route::get('profile',[ProfileController::class,'index']);
-Route::get('/', function () {
+Route::middleware('web')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+ });
+ 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/', function () {
     return view('layouts.layout');
 });
+});
+Route::get('profile',[ProfileController::class,'index']);
+
 Route::get('login', function () {
     return view('log.login');
-});
+})->name('login');
 Route::post('login',[AuthController::class,'login']);
 Route::get('register', function () {
     return view('log.register');
 });
 Route::get('home', function () {
-    $user = Socialite::driver('google')->user();
-    return view('main.home',compact('user'));
-});
+    return view('main.home');
+})->name('home');
 Route::get('friends', function () {
     return view('main.friend');})->name('friends');
 
@@ -41,7 +45,5 @@ Route::get('settings', function () {
     return view('main.setting');
 });
 
-Route::get('auth/{provider}', [AuthController::class, 'redirectToProvider']);
-Route::get('auth/{provider}/callback', [AuthController::class, 'handleProviderCallback']);
 
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+

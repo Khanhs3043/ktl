@@ -58,7 +58,7 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('login/{provider}', [AuthController::class, 'redirectToProvider']);
-Route::get('callback/{provider}', [AuthController::class, 'handleProviderCallback']);
+//Route::get('callback/{provider}', [AuthController::class, 'handleProviderCallback']);
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();

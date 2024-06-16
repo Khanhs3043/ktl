@@ -93,66 +93,66 @@ class AuthController extends Controller
         return Socialite::driver($provider)->stateless()->redirect();
     }
 
-    public function handleProviderCallback($provider)
-    {
-        try {
-            $socialUser = Socialite::driver($provider)->stateless()->user();
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'Unauthorized'], 401);
-        }
+    // public function handleProviderCallback($provider)
+    // {
+    //     try {
+    //         $socialUser = Socialite::driver($provider)->stateless()->user();
+    //     } catch (\Exception $e) {
+    //         return response()->json(['message' => 'Unauthorized'], 401);
+    //     }
 
-        // Check if the user already exists
-        $user = User::where('provider', $provider)
-                    ->where('provider_id', $socialUser->getId())
-                    ->first();
+    //     // Check if the user already exists
+    //     $user = User::where('provider', $provider)
+    //                 ->where('provider_id', $socialUser->getId())
+    //                 ->first();
 
-        if ($user) {
-            $token = $user->createToken('Personal Access Token')->plainTextToken;
-            return response()->json([
-                'user' => $user,
-                'token' => $token,
-            ], 200);
-        }
+    //     if ($user) {
+    //         $token = $user->createToken('Personal Access Token')->plainTextToken;
+    //         return response()->json([
+    //             'user' => $user,
+    //             'token' => $token,
+    //         ], 200);
+    //     }
 
-        // Check if the user exists by email
-        $existingUser = User::where('email', $socialUser->getEmail())->first();
-        if ($existingUser && !$existingUser->provider) {
-            return response()->json(['message' => 'Email already in use'], 409);
-        }
+    //     // Check if the user exists by email
+    //     $existingUser = User::where('email', $socialUser->getEmail())->first();
+    //     if ($existingUser && !$existingUser->provider) {
+    //         return response()->json(['message' => 'Email already in use'], 409);
+    //     }
 
-        // Create a new user if not exists
-        if (!$user) {
-            $user = User::create([
-                'name' => $socialUser->getName(),
-                'email' => $socialUser->getEmail(),
-                'provider' => $provider,
-                'provider_id' => $socialUser->getId(),
-                'password' => '', // Empty password for OAuth users
-            ]);
+    //     // Create a new user if not exists
+    //     if (!$user) {
+    //         $user = User::create([
+    //             'name' => $socialUser->getName(),
+    //             'email' => $socialUser->getEmail(),
+    //             'provider' => $provider,
+    //             'provider_id' => $socialUser->getId(),
+    //             'password' => '', // Empty password for OAuth users
+    //         ]);
 
-            $profile = $user->profile;
+    //         $profile = $user->profile;
 
-            if (!$profile) {
-                // If profile does not exist, create a new Profile
-                $profile = Profile::create([
-                    'uid' => $user->id,
-                    'username' => $socialUser->getName(), // Example: Use name as username
-                    // Optional fields can be left null or set as needed
-                    'avatar' => $socialUser->getAvatar(), // You can set a default avatar or handle it separately
-                    'dob' => null,//$socialUser->getDateOfBirth(), // Example: Date of birth
-                    'bio' => null, // Example: Biography
-                    'gender' => null, // Example: Gender
-                ]);
-            }
+    //         if (!$profile) {
+    //             // If profile does not exist, create a new Profile
+    //             $profile = Profile::create([
+    //                 'uid' => $user->id,
+    //                 'username' => $socialUser->getName(), // Example: Use name as username
+    //                 // Optional fields can be left null or set as needed
+    //                 'avatar' => $socialUser->getAvatar(), // You can set a default avatar or handle it separately
+    //                 'dob' => null,//$socialUser->getDateOfBirth(), // Example: Date of birth
+    //                 'bio' => null, // Example: Biography
+    //                 'gender' => null, // Example: Gender
+    //             ]);
+    //         }
 
-        }
+    //     }
         
-        $token = $user->createToken('Personal Access Token')->plainTextToken;
+    //     $token = $user->createToken('Personal Access Token')->plainTextToken;
 
-        return response()->json([
-            'user' => $user,
-            'profile'=> $profile,
-            'token' => $token,
-        ], 200);
-    }
+    //     return response()->json([
+    //         'user' => $user,
+    //         // 'profile'=> $profile,
+    //         'token' => $token,
+    //     ], 200);
+    // }
 }
