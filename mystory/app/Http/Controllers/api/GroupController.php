@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class GroupController extends Controller
 {
-    public function create(Request $request)
+    public function create(Request $request) // tạo mới một group với creator là người dùng hiện tại
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
@@ -28,7 +28,7 @@ class GroupController extends Controller
         return response()->json(['group' => $group], 201);
     }
 
-    public function addUserToGroup(Request $request, $groupId)
+    public function addUserToGroup(Request $request, $groupId) // thêm một user vào group
     {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|exists:users,id',
@@ -50,14 +50,14 @@ class GroupController extends Controller
         return response()->json(['message' => 'User added to group successfully'], 200);
     }
 
-    public function getGroups()
+    public function getGroups() // lấy tất cả group mà người dùng hiện tại là thành viên (không bao gồm group tự tạo)
     {
         $groups = Auth::user()->groups;
 
         return response()->json(['groups' => $groups], 200);
     }
 
-    public function myGroups(){
+    public function myGroups(){ //lấy tất cả groups mà người dùng tạo
         $user =Auth::user(); 
 
         $createdGroups = $user->createdGroups()->get();
@@ -66,7 +66,7 @@ class GroupController extends Controller
         return response()->json(['created_groups' => $createdGroups]);
 
     }
-    public function groupUsers($groupId){
+    public function groupUsers($groupId){ // lấy tất cả thành viên trong một group dựa vào grouId
         // $user =Auth::user(); 
         $group = Group::find($groupId);
 
