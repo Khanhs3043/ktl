@@ -5,6 +5,7 @@
   <title>Mystory</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css'>
   <link rel="stylesheet" href="css/layout.css">
+  <!-- <link rel="stylesheet" href="css/profile.css"> -->
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -37,16 +38,16 @@
     <div id="nav-content-highlight"></div>
   </div>
   <input id="nav-footer-toggle" type="checkbox"/>
-  <div id="nav-footer">
+  <!-- <div id="nav-footer">
     <div id="nav-footer-heading">
       <div id="nav-footer-avatar"><img src="https://gravatar.com/avatar/4474ca42d303761c2901fa819c4f2547"/></div>
-      <div id="nav-footer-titlebox"><a id="nav-footer-title" href="https://codepen.io/uahnbu/pens/public" target="_blank">uahnbu</a><span id="nav-footer-subtitle">Admin</span></div>
+      <div id="nav-footer-titlebox"><a id="nav-footer-title" href="https://codepen.io/uahnbu/pens/public" target="_blank">{{Auth::user()->name}}</a></div>
       <label for="nav-footer-toggle"><i class="fas fa-caret-up"></i></label>
     </div>
     <div id="nav-footer-content">
       <Lorem>ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Lorem>
     </div>
-  </div>
+  </div> -->
 </div>
 <div class="container">
     @yield('content')
