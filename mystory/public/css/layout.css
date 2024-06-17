@@ -20,7 +20,13 @@
   }
   a{
     text-decoration: none;
-    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+  input, body, h1, h2, h3, h4, h5, h6, p, a, input, button, textarea, select{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
   #nav-toggle:checked ~ #nav-header {
@@ -369,7 +375,7 @@
     align-items: center;
     border-radius: 20px;
     background-color: #ffffff;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .logout-button{
   margin-right: 20px;

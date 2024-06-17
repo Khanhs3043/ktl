@@ -20,7 +20,7 @@
                 <div class="item-3 item">
                     <div class="number">
                         <p><span>{{count($user->posts)}}</span> Posts</p>
-                        <p><span>{{count($user->friends)}}</span> Friends </p>
+                        <p><span>{{$user->countFriends()}}</span> Friends </p>
                     </div>
                 </div>
                 <div class="item-4 item" style="font-size: 16px;">

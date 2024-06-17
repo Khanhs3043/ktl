@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Mystory</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css'>
-  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="/css/layout.css">
   <!-- <link rel="stylesheet" href="css/profile.css"> -->
 </head>
 <body>
@@ -28,7 +28,7 @@
     <a href = '/search' class="nav-button"><div class="nav-button"><i class="fas fa-search"></i><span>Sreach</span></div></a>
     <a href = '/tasks' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-list-check"></i><span>Tasks</span></div></a>
     <a href = '/appointments' class="nav-button"><div class="nav-button"><i class="fas fa-regular fa-calendar-check"></i><span>Appointments</span></div></a>
-    <a href = '/friend_requests' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-envelope"></i><span>Friend requests</span></div></a>
+    <a href = '/requests' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-envelope"></i><span>Friend requests</span></div></a>
     <a href = '/settings' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-gear"></i><span>Setting</span></div></a>
     
     <!-- <form  action = "/logout" method="post"><button class="nav-button"><i class="fas fa-solid fa-comments"></i><span>Log out</span></button></form> -->

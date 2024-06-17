@@ -54,6 +54,17 @@ class FRequestController extends Controller
         }
     }
 
+    public function deleteRequest($userId)
+    {
+        $currentUser = Auth::user();
+        $deleted = $currentUser->deleteFriendRequest($userId);
+
+        if ($deleted) {
+            return response()->json(['message' => 'Friend request deleted successfully'], 200);
+        } else {
+            return response()->json(['message' => 'No friend request found to delete'], 404);
+        }
+    }
     public function getRequests($uid) // lấy những lời mời kết bạn được gửi tới (chỉ lấy trạng thái pending)
     {
         $requests = FRequest::where('receiver_id', $uid)->where('status', 'pending')->get();
