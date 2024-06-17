@@ -50,4 +50,56 @@ class GroupController extends Controller
         $group->delete();
         return redirect('/groups')->with('success', 'Group deleted successfully.');
     }
+    
+    public function update($id,Request $request){
+        $group = Group::find($id);
+
+        if (!$group) {
+            return redirect()->back()->withErrors(['message' => 'Group not found']);
+        }
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+        $memberIds = $request->input('members', []);
+        foreach ($memberIds as $memberId) {
+            $group->addMember($memberId);
+        }
+        $group->update($request->all());
+        return redirect('/groups')->with('success', 'Group updated successfully!');
+
+    }
+    public function showUpdateView($id){
+        $group = Group::find($id);
+        return view('main.edit_group',compact('group'));
+    }
+
+    public function addUserToGroup(Request $request, $groupId) // thêm một user vào group
+    {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        $group = Group::findOrFail($groupId);
+
+        // Kiểm tra xem người dùng có quyền thêm người dùng khác vào nhóm hay không
+        if ($group->creator_id !== Auth::id()) {
+            return redirect()->back()->withErrors(['message' => 'Unauthorized']);
+        }
+
+        $group->users()->attach($request->user_id);
+
+        return redirect('/groups')->with('success', 'successfully!');;
+    }
+    public function groupDetails($id){
+        $group = Group::find($id);
+        return view('main.group_details',compact('group'));
+    }
 }

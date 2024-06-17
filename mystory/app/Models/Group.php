@@ -30,4 +30,10 @@ class Group extends Model
     public function membersCount(){
         return count($this->members);
     }
+    public function addMember($memberId){
+        if (!$this->members()->where('uid', $memberId)->exists()) {
+            // Thêm người dùng vào nhóm nếu chưa là thành viên
+            $this->members()->attach($memberId);
+        }
+    }
 }

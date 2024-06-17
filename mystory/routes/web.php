@@ -68,6 +68,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('groups', [GroupController::class,'myGroups']);
     Route::post('groups/create', [GroupController::class,'create']);
     Route::post('groups/delete/{id}', [GroupController::class,'delete']);
+    Route::post('groups/update/{id}', [GroupController::class,'update']);
+    Route::get('group/update/{id}', [GroupController::class,'showUpdateView']);
+    Route::get('group/{id}', [GroupController::class,'groupDetails']);
+
 });
 
 

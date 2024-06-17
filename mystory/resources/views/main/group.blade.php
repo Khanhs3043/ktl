@@ -13,27 +13,34 @@
     <div class="group group1 active">
         @if($mygroups)
             @foreach($mygroups as $mygroup)
-                <div class="mygroup">
-                    <p class="mg-name">{{$mygroup->name}}</p>
-                    <p class="mg-other">Created at: {{$mygroup->created_at}}</p>
-                    <p class="mg-other">{{$mygroup->memberscount()}} members</p>
-                    <form action="/groups/delete/{{$mygroup->id}}" method="post">
-                        @csrf
-                        <button class="gr-btn btn-trash"><i class="fa-solid fa-trash-can"></i></button>
-                    </form>
-                    
-                    <button class="gr-btn btn-edit"><i class="fa-solid fa-edit"></i></button>
-                </div>
+                
+                    <div class="mygroup"><a href="/group/{{$mygroup->id}}">
+                        <p class="mg-name">{{$mygroup->name}}</p>
+                        <p class="mg-other">Created at: {{$mygroup->created_at}}</p>
+                        <p class="mg-other">{{$mygroup->membersCount()}} members</p>
+                        <form action="/groups/delete/{{$mygroup->id}}" method="post">
+                            @csrf
+                            <button class="gr-btn btn-trash"><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+                        <a href="/group/update/{{$mygroup->id}}"><button class="gr-btn btn-edit"><i class="fa-solid fa-edit"></i></button></a>
+                     </a></div>
+               
             @endforeach
         @endif
     </div>
     <div class="group group2">
         @if($groups)
             @foreach($groups as $group)
-                <div class="group">
-                    <p class="mg-name">{{$group->name}}</p>
-                    <p class="mg-other">Created at: {{$group->created_at}}</p>
-                    <p class="mg-other">{{$group->memberscount}} members</p>
+                <div class="mygroup">
+                    <a href="/group/{{$group->id}}">
+                        <p class="mg-name">{{$group->name}}</p>
+                        <p class="mg-other">Creator: {{$group->creator->name}}</p>
+                        <p class="mg-other">{{$group->membersCount()}} members</p>
+                        <!-- <form action="/groups/delete/{{$mygroup->id}}" method="post">
+                            @csrf
+                            <button class="gr-btn btn-trash"><i class="fa-solid fa-trash-can"></i></button>
+                        </form> -->
+                    </a>
                 </div>
             @endforeach
         @endif
@@ -48,5 +55,6 @@
             <button class="submit-btn">Create</div>
         </form>
     </div>
+    
     <script src="/js/group.js"></script>
 @endsection

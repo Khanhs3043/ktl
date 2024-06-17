@@ -46,7 +46,6 @@
     position: absolute;
     display: none;
 }
-
 .group.active {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -63,6 +62,19 @@
     z-index: 100;
     display: none;
     transform: translateY(20%);
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+.edit-group{
+    width: 600px;
+    height: fit-content;
+    padding-bottom: 50px;
+    background-color: rgba(11, 11, 11, 0.767);
+    position: absolute;
+    top:50px;
+    display: flex;
+    z-index: 102;
     border-radius: 10px;
     flex-direction: column;
     align-items: center;
@@ -104,11 +116,11 @@
     border: 2px solid aqua;
     transition: 0.3s;
 }
-.create-group p{
+.create-group p, .edit-group p{
     text-align: center;
     color: white;
 }
-.create-group input{
+.create-group input, .edit-group input{
     font-size: 18px;
     color: white;
     border: 2px solid white;
@@ -165,4 +177,45 @@
 .btn-edit{
     color: grey;
     bottom: 60%;
+}
+.edit-group form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.efriend{
+    margin-top: 15px;
+    justify-content: space-between;
+    display: flex;
+    width: 85%;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding: 0px 20px;
+}
+.efriend input{
+    width: 30px;
+    height: 30px;
+}
+.friend-info p{
+    text-align: left;
+}
+.friend-email{
+    font-size: 14px;
+}
+
+.wrap-friend{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 300px;
+    overflow: scroll;
+
+}
+.wrap-friend::-webkit-scrollbar {
+    display: none;
 }
