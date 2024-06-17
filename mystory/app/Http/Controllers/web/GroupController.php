@@ -35,4 +35,19 @@ class GroupController extends Controller
 
         return redirect('/groups');
     }
+    public function delete($id){
+        $group = Group::find($id);
+
+        if (!$group) {
+            return redirect()->back()->withErrors(['message' => 'Group not found']);
+        }
+
+        // Check if the authenticated user is the owner of the post
+        if ($group->creator_id != Auth::id()) {
+            return redirect()->back()->withErrors(['message' => 'Unauthorized']);
+        }
+
+        $group->delete();
+        return redirect('/groups')->with('success', 'Group deleted successfully.');
+    }
 }

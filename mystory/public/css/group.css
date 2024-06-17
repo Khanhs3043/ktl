@@ -1,0 +1,168 @@
+.options{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.option{
+    background-color: rgb(205, 202, 202);
+    border-radius: 30px;
+    width: 300px;
+    padding: 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+.create{
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    color: black;
+    border-radius: 50px;
+    transition: 0.3s;
+    border: 2px solid rgb(112, 178, 218);
+}
+.create:hover{
+    color: lightseagreen;
+    background-color: rgb(216, 235, 228);
+    transition: 0.3s;
+}
+.option:hover{
+    color: white;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px  rgba(173, 216, 230, 0.803);
+}
+.wrap-gr{
+    width: 100%;
+    position: relative;
+}
+.space{
+    width: 50px;
+}
+.group{
+    width: 100%;
+    position: absolute;
+    display: none;
+}
+
+.group.active {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 16px;
+}
+.option.active{
+    background-color: rgb(164, 240, 214);
+}
+.create-group{
+    width: 400px;
+    height: 200px;
+    background-color: rgba(11, 11, 11, 0.767);
+    position: absolute;
+    z-index: 100;
+    display: none;
+    transform: translateY(20%);
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+.show{
+    display: flex;
+}
+.close-btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: red;
+    transition: 0.3s;
+    border: 2px solid rgba(255, 0, 0, 0);
+    border-radius: 30px;
+    padding: 3px 5px ;
+    cursor: pointer;
+}
+.close-btn:hover{
+    border-radius: 30px;
+    border: 2px solid red;
+    transition: 0.3s;
+}
+.submit-btn{
+    padding: 5px 10px;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 20px;
+    color: aqua;
+    cursor: pointer;
+    font-size: 18px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: transparent;
+    border: 2px solid rgba(0, 255, 255, 0);
+    transition: 0.3s;
+}
+.submit-btn:hover{
+    border: 2px solid aqua;
+    transition: 0.3s;
+}
+.create-group p{
+    text-align: center;
+    color: white;
+}
+.create-group input{
+    font-size: 18px;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 300px;
+    height: 50px;
+    padding: 20px;
+    background-color: rgb(92, 92, 92);
+}
+.mygroup{
+    position: relative;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.205);
+    background-color: aliceblue;
+}
+.mygroup:hover{
+    transition: 0.3s;
+    box-shadow: 0 5px 25px rgba(98, 211, 236, 0.671);
+}
+.mg-name{
+    font-size: 18px;
+    font-weight: bold;
+}
+.mg-other{
+    font-size: 14px;
+    color: grey;
+}
+.gr-btn{
+    position: absolute;
+    right: 20px;
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    padding: 10px;
+    border-radius: 30px;
+    border: none;
+    background-color: rgb(212, 209, 209);
+}
+.gr-btn:hover{
+    color: rgb(127, 206, 255);
+    transition: 0.3s;
+}
+.btn-trash{
+    color: red;
+    top: 60%;
+}
+.btn-edit{
+    color: grey;
+    bottom: 60%;
+}

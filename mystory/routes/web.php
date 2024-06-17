@@ -66,6 +66,8 @@ Route::middleware(['auth'])->group(function () {
 
     //group
     Route::get('groups', [GroupController::class,'myGroups']);
+    Route::post('groups/create', [GroupController::class,'create']);
+    Route::post('groups/delete/{id}', [GroupController::class,'delete']);
 });
 
 

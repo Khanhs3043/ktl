@@ -21,8 +21,8 @@
                     <div class="wrap-btn">
                     <form action="/request/respond/{{ $request->id }}" method="POST">
                             @csrf
-                            <button type="submit" name="status" value="accepted">Accept</button>
-                            <button type="submit" name="status" value="rejected">Reject</button>
+                            <button type="submit" name="status" value="accepted" class="ac">Accept</button>
+                            <button type="submit" name="status" value="rejected" class="rj">Reject</button>
                         </form>
                     </div>
                 </div>

@@ -1,0 +1,50 @@
+.request{
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    margin-right: 20px;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.208);
+    transition: 0.3s;
+}
+.request:hover{
+    transition: 0.3s;
+    box-shadow: 0 5px 25px rgba(127, 208, 212, 0.834);
+}
+.wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wrap img{
+    border-radius: 50px;
+    width: 50%;
+    object-fit: cover;
+}
+.requests{
+    display: flex;
+    flex-wrap: wrap;
+}
+.wrap-btn form{
+    display: flex;
+    justify-content: center;
+}
+.wrap-btn button{
+    padding: 5px 20px;
+    margin: 0px 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.wrap-btn button:hover{
+    transition: 0.3s;
+    border: 2px solid lightblue;
+    color: white;
+}
+.ac{
+    background-color: rgb(117, 186, 214);
+}
+.rj{
+    background-color: rgb(238, 186, 148);
+}
