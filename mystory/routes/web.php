@@ -24,11 +24,11 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('profile',[ProfileController::class,'index']);
 
 Route::get('login', function () {
-    return view('log.login');
+    return view('auth.login');
 })->name('login');
 Route::post('login',[AuthController::class,'login']);
 Route::get('register', function () {
-    return view('log.register');
+    return view('auth.register');
 });
 Route::get('home',[ProfileController::class,'index'])->name('home');
 Route::get('post/create', function () {
