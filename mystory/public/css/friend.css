@@ -1,6 +1,6 @@
 .friend{
     padding: 10px;
-    width:350px;
+    width:400px;
     border-radius: 10px;
     border: none;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -8,6 +8,7 @@
     overflow: hidden;
     transition: 0.3s;
     margin-right: 20px;
+    margin-top: 20px;
 }
 .friend:hover{
     box-shadow: 0 0 25px rgba(139, 185, 203, 0.552);
@@ -27,4 +28,5 @@
 .friends{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }

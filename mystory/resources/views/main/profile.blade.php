@@ -18,8 +18,19 @@
                             @csrf
                             <button type="submit" class="btn">Unfriend</button>
                         </form>
+                        @elseif (Auth::user()->id == $user->id )
+                            <div></div>
+                        @elseif (Auth::user()->checkFriendRequestStatus($user->id)=='pending')
+                        <form action="/cancel-request/{{$user->id}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn" >Request sent</button>
+                        </form>
                         @else
-                            <a href="#"><button class="btn">Add Friend</button></a>
+                        <form action="/send-request/{{$user->id}}" method="post">
+                            @csrf
+                            <button class="btn">Add Friend</button>
+                        </form>
                         @endif
                         <!-- <a href="posts/create"><button class="btn">Create post</button></a> --> 
                     </div>
@@ -44,15 +55,6 @@
                     @foreach ($posts as $post)
                     <div class="top-post">
                         <p class="post-date">{{$post->created_at}}</p>
-                        <i class="fa-solid fa-ellipsis" style="visibility: hidden;"></i>
-                        <div id="optionsMenu" class="options-menu">
-                            <a href="#"><button type="button" >Edit</button></a>
-                            <form action="/posts/{{$post->id}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Delete</button>
-                            </form>
-                        </div>
                     </div>
                     <article class="post">
                         <h2 class="post-title">{{$post->title}}</h2>

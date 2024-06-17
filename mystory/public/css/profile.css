@@ -112,20 +112,32 @@
     justify-content: space-between;
     align-items: end;
 }
-.top-post i{
+.delete-btn{
+    background-color: transparent;
+    border: none;
+}
+.delete{
+    color: rgb(209, 44, 44);
+}
+.wrap-options{
+    display: flex;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    padding: 5px 0px;    
+    padding-left: 20px;
+    transition: 0.3s;
+}
+.wrap-options:hover{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.478);
+    transition: 0.3s;
+}
+.wrap-options i{
     font-size: 25px;
     margin-right: 20px;
+    transition: 0.3s;
     cursor: pointer;
 }
-.options-menu {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.options-dropdown:hover .options-menu {
-    display: block;
+.wrap-options i:hover{
+    color: rgb(42, 165, 159);
+    transition: 0.3s;
 }

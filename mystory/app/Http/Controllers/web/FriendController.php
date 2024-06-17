@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\FRequest;
 
 class FriendController extends Controller
 {
@@ -60,23 +61,26 @@ class FriendController extends Controller
         return view('main.friend', compact('friends'));
     }
     public function unfriend($id)
-{
-    $currentUser = auth()->user();
+    {
+        $currentUser = auth()->user();
     $friend = User::find($id);
 
     if (!$friend) {
         return response()->json(['message' => 'User not found'], 404);
     }
 
-    // Check if the current user is friends with the friend user
-    if (!$currentUser->isFriendWith($friend->id)) {
-        return response()->json(['message' => 'Not friends with this user'], 400);
-    }
-
-    // Detach the friend from the current user's friends
-    $currentUser->friends()->detach($friend);
+    // Tìm và xóa các yêu cầu kết bạn giữa $currentUser và $friend
+    FRequest::where(function ($query) use ($currentUser, $friend) {
+        $query->where('sender_id', $currentUser->id)
+            ->where('receiver_id', $friend->id)
+            ->where('status', 'accepted');
+    })->orWhere(function ($query) use ($currentUser, $friend) {
+        $query->where('sender_id', $friend->id)
+            ->where('receiver_id', $currentUser->id)
+            ->where('status', 'accepted');
+    })->delete();
 
     return response()->json(['message' => 'Successfully unfriended'], 200);
-}
+    }
 
 }

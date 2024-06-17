@@ -88,8 +88,7 @@ class User extends Authenticatable
     }
     public function isFriendWith($userId)
     {
-        return $this->friends()->where('receiver_id', $userId)->exists() ||
-                $this->friends()->where('sender_id', $userId)->exists();
+        return $this->friends()->contains('id', $userId);
     }
     public function countFriends()
     {
@@ -102,12 +101,12 @@ class User extends Authenticatable
             ->wherePivot('status', 'accepted')
             ->withTimestamps();
     }
-    public function createdGroups()
+    public function createdGroups() //group tự tạo
     {
         return $this->hasMany(Group::class, 'creator_id');
     }
     
-    public function groups()
+    public function groups() //group mà mình là thành viên
     {
         return $this->belongsToMany(Group::class, 'user_groups', 'uid', 'group_id')
                     ->withTimestamps();

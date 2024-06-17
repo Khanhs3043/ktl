@@ -27,4 +27,7 @@ class Group extends Model
         return $this->belongsToMany(User::class, 'user_groups', 'group_id', 'uid')
                     ->withTimestamps();
     }
+    public function membersCount(){
+        return count($this->members);
+    }
 }

@@ -43,15 +43,23 @@
                     @foreach ($posts as $post)
                     <div class="top-post">
                         <p class="post-date">{{$post->created_at}}</p>
-                        <i class="fa-solid fa-ellipsis" onclick="toggleOptions()"></i>
-                        <div id="optionsMenu" class="options-menu">
+                        <div class="wrap-options">
+                        <form action="/posts/{{$post->id}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete-btn"><i class="fa-regular fa-trash-can delete"></i></button>
+                            </form>
+                            <a href="#"><i id="icon" class="fa-solid fa-edit edit"></i></a>
+                        </div>
+                        
+                        <!-- <div id="optionsMenu" class="options-menu">
                             <a href="#"><button type="button" >Edit</button></a>
                             <form action="/posts/{{$post->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">Delete</button>
                             </form>
-                        </div>
+                        </div> -->
                     </div>
                     <article class="post">
                         <h2 class="post-title">{{$post->title}}</h2>
@@ -71,14 +79,26 @@
         </div>
     </div>
     <script>
-        function toggleOptions() {
-    var optionsMenu = document.getElementById("optionsMenu");
-    if (optionsMenu.style.display === "block") {
-        optionsMenu.style.display = "none";
-    } else {
-        optionsMenu.style.display = "block";
-    }
-}
+        document.addEventListener('DOMContentLoaded', function () {
+            const myIcon = document.getElementById('icon');
+            const myList = document.getElementById('optionsMenu');
+
+            myIcon.addEventListener('click', function (event) {
+                const rect = myIcon.getBoundingClientRect();
+                const x = rect.left + window.scrollX;
+                const y = rect.top + window.scrollY + myIcon.offsetHeight;
+
+                myList.style.left = `${x}px`;
+                myList.style.top = `${y}px`;
+                myList.style.display = 'block';
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!myIcon.contains(event.target) && !myList.contains(event.target)) {
+                    myList.style.display = 'none';
+                }
+            });
+        });
     </script>
 @endsection
 

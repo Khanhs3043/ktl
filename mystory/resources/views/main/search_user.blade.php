@@ -2,9 +2,9 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/search.css"> 
 @section('content')
-    <p>Searching.....</p>
+    <h1>Find friends</h1>
     <div class="container mt-5">
-    <p class="text-center mb-4">Find friends</p>
+    <!-- <p class="text-center mb-4">Find friends</p> -->
     <form action="/search" method="POST" class="form-inline justify-content-center">
         @csrf
         <div class="form-group mb-2">
@@ -31,7 +31,6 @@
                 </div>
                 </div>
                 <div class="friends">
-                    {{Auth::user()->checkFriendRequestStatus($user->id)}}
                     @if(Auth::user()->isFriendWith($user->id))
                         <button type="button" class="fr-btn isfr">Friend</button>
                     @elseif (Auth::user()->checkFriendRequestStatus($user->id)=='pending')
@@ -53,7 +52,7 @@
             </a>
         @endforeach
     @else 
-        <p>no user found</p>
+        <p style="text-align: center; width: 100%">no user found</p>
     @endif
     </div>
 </div>

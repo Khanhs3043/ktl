@@ -1,18 +1,25 @@
 <?php
 
+use App\Http\Controllers\web\GroupController;
 use App\Http\Controllers\web\FriendController;
 use App\Http\Controllers\web\ProfileController;
 use App\Http\Controllers\web\AuthController;
 use App\Http\Controllers\web\PostController;
 use App\Http\Controllers\web\SearchController;
 use App\Http\Controllers\web\FRequestController;
-use App\Models\FRequest;
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
+// use Laravel\Socialite\Facades\Socialite;
 
 //auth
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+Route::get('login', function () {
+    return view('auth.login');
+})->name('login');
+Route::get('register', function () {
+    return view('auth.register');
+});
+
 // Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('login/{provider}', [AuthController::class, 'redirectToProvider']);
 Route::get('callback/{provider}', [AuthController::class, 'handleProviderCallback']);
@@ -25,29 +32,19 @@ Route::middleware('auth:sanctum')->group(function () {
     return view('layouts.layout');
 });
 });
-Route::get('profile',[ProfileController::class,'index']);
-Route::get('profile/{id}',[ProfileController::class,'showProfile']);
-Route::get('login', function () {
-    return view('auth.login');
-})->name('login');
 
-Route::get('search', function () {
-    return view('main.search_user');
-});
-Route::post('search',[SearchController::class,'searchUsers']);
-
-Route::post('login',[AuthController::class,'login']);
-Route::get('register', function () {
-    return view('auth.register');
-});
-
-
-
+//Need to log in to use
 Route::middleware(['auth'])->group(function () {
     Route::get('home',[ProfileController::class,'index'])->name('home');
     Route::get('post/create', function () {
         return view('main.create_post');
     });
+    //search
+    Route::get('search', function () {
+        return view('main.search_user');
+    });
+    Route::post('search',[SearchController::class,'searchUsers']);
+
     // Route::get('posts', [PostController::class, 'index'])->name('posts.index');
     Route::get('posts/user/{uid}', [PostController::class, 'userPosts'])->name('posts.user');
     Route::get('posts/create', [PostController::class, 'create']);
@@ -63,13 +60,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('requests', [FRequestController::class,'getRequests']);
     Route::post('/request/respond/{id}', [FRequestController::class, 'respondRequest']);
     Route::post('/unfriend/{id}',[FriendController::class,'unfriend']);
+    //profile
+    Route::get('profile',[ProfileController::class,'index']);
+    Route::get('profile/{id}',[ProfileController::class,'showProfile']);
+
+    //group
+    Route::get('groups', [GroupController::class,'myGroups']);
 });
 
 
+//-------------------not yet ------------
 
-Route::get('groups', function () {
-    return view('main.group');
-});
 Route::get('tasks', function () {
     return view('main.task');
 });
