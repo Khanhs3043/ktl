@@ -26,4 +26,5 @@ document.addEventListener('DOMContentLoaded', function () {
     closebtn.onclick = function(){
         createarea.classList.remove('show');
     };
+    
 });

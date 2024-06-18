@@ -32,8 +32,11 @@ class Group extends Model
     }
     public function addMember($memberId){
         if (!$this->members()->where('uid', $memberId)->exists()) {
-            // Thêm người dùng vào nhóm nếu chưa là thành viên
             $this->members()->attach($memberId);
         }
+    }
+    public function removeMember($userId)
+    {
+        return $this->members()->detach($userId);
     }
 }

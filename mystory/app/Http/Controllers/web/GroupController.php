@@ -69,7 +69,7 @@ class GroupController extends Controller
             $group->addMember($memberId);
         }
         $group->update($request->all());
-        return redirect('/groups')->with('success', 'Group updated successfully!');
+        return redirect()->back()->with('success', 'successfully!');
 
     }
     public function showUpdateView($id){
@@ -96,10 +96,15 @@ class GroupController extends Controller
 
         $group->users()->attach($request->user_id);
 
-        return redirect('/groups')->with('success', 'successfully!');;
+        return redirect('/groups')->with('success', 'successfully!');
     }
     public function groupDetails($id){
         $group = Group::find($id);
         return view('main.group_details',compact('group'));
+    }
+    public function removeMember($groupid,$uid){
+        $group = Group::find($groupid);
+        $group->removeMember($uid);
+        return redirect()->back()->with('success', 'successfully!');
     }
 }

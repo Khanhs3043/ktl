@@ -127,12 +127,31 @@ class User extends Authenticatable
         return $this->hasMany(Appointment::class, 'dateee_id');
     }
 
+// task
     public function tasks()
     {
         return $this->hasMany(Task::class, 'uid' );
     }
-    
 
+    public function completedTasks()
+    {
+        return $this->tasks()->where('status', 'finished');
+    }
+
+    public function incompleteTasks()
+    {
+        return $this->tasks()->where('status', 'unfinished');
+    }
+
+    public function overdueTasks()
+    {
+        return $this->tasks()->where('status', 'unfinished')->where('due_date', '<', now());
+    }
+
+    public function assignedTasks()
+    {
+        return $this->hasMany(Task::class, 'assign_to');
+    }
     protected $fillable = [
         'name',
         'email',

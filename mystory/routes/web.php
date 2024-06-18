@@ -7,6 +7,7 @@ use App\Http\Controllers\web\AuthController;
 use App\Http\Controllers\web\PostController;
 use App\Http\Controllers\web\SearchController;
 use App\Http\Controllers\web\FRequestController;
+use App\Http\Controllers\web\TaskController;
 use Illuminate\Support\Facades\Route;
 // use Laravel\Socialite\Facades\Socialite;
 
@@ -71,15 +72,16 @@ Route::middleware(['auth'])->group(function () {
     Route::post('groups/update/{id}', [GroupController::class,'update']);
     Route::get('group/update/{id}', [GroupController::class,'showUpdateView']);
     Route::get('group/{id}', [GroupController::class,'groupDetails']);
+    Route::post('group/remove_member/{groupId}/{uid}', [GroupController::class,'removeMember']);
 
+    //task
+    Route::post('tasks/create', [TaskController::class,'store']);
+    Route::get('tasks/create', [TaskController::class,'create']);
+    Route::get('tasks', [TaskController::class,'index']);
 });
 
 
 //-------------------not yet ------------
-
-Route::get('tasks', function () {
-    return view('main.task');
-});
 Route::get('settings', function () {
     return view('main.setting');
 });

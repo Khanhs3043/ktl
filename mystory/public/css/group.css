@@ -79,9 +79,7 @@
     flex-direction: column;
     align-items: center;
 }
-.show{
-    display: flex;
-}
+
 .close-btn{
     position: absolute;
     right: 10px;
@@ -199,6 +197,17 @@
     width: 30px;
     height: 30px;
 }
+.friend-info{
+    display: flex;
+    align-items: center;
+}
+.friend-info .avatar{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50px;
+    margin-right: 20px;
+}
 .friend-info p{
     text-align: left;
 }
@@ -214,8 +223,120 @@
     width: 100%;
     height: 300px;
     overflow: scroll;
+    padding-bottom: 20px;
 
 }
 .wrap-friend::-webkit-scrollbar {
     display: none;
+}
+.edit-group2{
+    display: none;
+}
+.show{
+    display: flex;
+}
+.wrap-members{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: rgb(242, 242, 242);
+    transition: 0.3s;
+    border: 4px solid rgba(173, 216, 230, 0);
+}
+.wrap-members:hover{
+    transition: 0.3s;
+    border: 4px solid lightblue;
+}
+.wrap-members button{
+    position: absolute;
+    right: 50px;
+    color: red;
+    transition: 0.3s;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+.wrap-members button:hover{
+    text-decoration: underline;
+    transition: 0.3s;
+    scale: 1.1;
+}
+.wrap-members p{
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.wrap-members .member-email{
+    color: grey;
+
+    font-weight: normal;
+    font-size: 16px;
+}
+.member-avatar{
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.member-avatar img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.creator{
+    background-image: url(https://static.vecteezy.com/system/resources/previews/033/297/676/non_2x/fun-colorful-seamless-line-pattern-creative-doodle-abstract-style-art-background-for-kids-trendy-texture-design-with-contemporary-basic-shapes-on-black-background-illustration-vector.jpg) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    padding-top: 20px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.creator-ava{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    overflow: hidden;
+    border: 4px solid lightblue;
+}
+.creator-ava img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.creator p, .titleformembers{
+    font-size: 20px;
+    font-weight: bold;
+}
+.creator p{
+    padding: 5px 20px;
+    background-color: grey;
+    color: white;
+    border-radius: 30px;
+}
+.titleformembers{
+    width: 85%;
+    text-align: left;
+}
+.addmember-btn{
+    background-color: transparent;
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 5px 20px;
+    transition: 0.3s;
+}
+.addmember-btn:hover{
+    border: 2px solid lightblue;
+    background-color: aliceblue;
+    transition: 0.3s;
 }

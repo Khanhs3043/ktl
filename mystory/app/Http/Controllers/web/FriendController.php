@@ -80,7 +80,7 @@ class FriendController extends Controller
             ->where('status', 'accepted');
     })->delete();
 
-    return response()->json(['message' => 'Successfully unfriended'], 200);
+    return redirect()->back()->with('success', 'successfully unfriended');
     }
 
 }

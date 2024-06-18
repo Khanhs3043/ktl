@@ -36,10 +36,6 @@
                         <p class="mg-name">{{$group->name}}</p>
                         <p class="mg-other">Creator: {{$group->creator->name}}</p>
                         <p class="mg-other">{{$group->membersCount()}} members</p>
-                        <!-- <form action="/groups/delete/{{$mygroup->id}}" method="post">
-                            @csrf
-                            <button class="gr-btn btn-trash"><i class="fa-solid fa-trash-can"></i></button>
-                        </form> -->
                     </a>
                 </div>
             @endforeach
