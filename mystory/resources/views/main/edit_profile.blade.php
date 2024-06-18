@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-<link rel="stylesheet" href="accfix.css">
+<link rel="stylesheet" href="/css/accfix.css">
 @section('content')
 <div class="body_all">
         <form action="">
@@ -9,18 +9,18 @@
                 </div>
                 <div class="item-2 item">
                     <div class="profile-avatar">
-                        <img src="money.jpg" alt="">
-                        <p style="font-weight: bold;">Quynh Trang</p>
-                        <button class="button">Đổi ảnh</button>
+                        <img src="{{$profile->avatar}}" alt="">
+                        <p style="font-weight: bold;">{{$profile->username}}</p>
+                        <button class="button" type="button">Change avatar</button>
                     </div>
                 </div>
                 <div class="item-3 item">
                     <div class="name">
                         <div class="title-name">
-                            <p>Tên</p> 
+                            <p>Name</p> 
                         </div>
                         <div id="editableText" contenteditable="true" class="editable-text">
-                            Quynh Trang
+                            {{$profile->username}}
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                             <p>Bio</p>
                         </div>
                         <div id="editableText" contenteditable="true" class="editable-text">
-                            Bio
+                        {{$profile->bio}}
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                             <p>Date of Birth</p>
                         </div>
                         <div>
-                            <input type="date" id="dob" name="dob" required>
+                            <input type="date" id="dob" name="dob" value="{{$profile->dob}}" require>
                         </div>
                     </div>
                 </div>
@@ -50,9 +50,9 @@
                             <p>Gender</p>
                         </div>
                         <select id="gender" name="gender" required>
-                            <option value="male" selected>male</option>
-                            <option value="female">female</option>
-                            <option value="other">other</option>
+                            <option value="male"  {{$profile->gender == 'male'? 'selected' : ''}}>male</option>
+                            <option value="female" {{$profile->gender  == 'female'? 'selected' : ''}}>female</option>
+                            <option value="other" {{$profile->gender == 'other'? 'selected' : ''}}>other</option>
                         </select>
                     </div>
                 </div>

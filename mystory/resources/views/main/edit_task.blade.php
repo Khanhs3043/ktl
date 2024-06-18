@@ -9,7 +9,7 @@
         <label for="des">Description:</label>
         <textarea class="textarea" name="des" id="des" required>{{$task->des}}</textarea>
         <label  for="due_date">Due Date:</label>
-        <input class="date" type="date" name="due_date" id="due_date" value="{{$task->due_date}}">
+        <input class="date" type="date" name="due_date" id="due_date" value="{{date('Y-m-d',strtotime($task->due_date))}}">
         <label for="assign_to">Assign To:</label>
         <select class="select" type="number" name="assign_to" id="assign_to">
             <option class="select-option" value="" default>Me</option>
