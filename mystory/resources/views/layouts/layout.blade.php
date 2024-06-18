@@ -7,8 +7,52 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="/css/layout.css">
   <!-- <link rel="stylesheet" href="css/profile.css"> -->
+  <style>
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background-color: red;
+        }
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+        .alert-error {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+    </style>
 </head>
 <body>
+@if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-error">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-error">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <!-- partial:index.partial.html -->
 <div id="nav-bar">
   <input id="nav-toggle" type="checkbox"/>
@@ -29,9 +73,7 @@
     <a href = '/search' class="nav-button"><div class="nav-button"><i class="fas fa-search"></i><span>Sreach</span></div></a>
     <a href = '/tasks' class="nav-button"><div class="nav-button"><i class="fas fa-solid fa-list-check"></i><span>Tasks</span></div></a>
     <a href = '#' class="nav-button"><div class="nav-button"><i class="fas fa-regular fa-calendar-check"></i><span>Appointments</span></div></a>
-    
-    
-    <!-- <form  action = "/logout" method="post"><button class="nav-button"><i class="fas fa-solid fa-comments"></i><span>Log out</span></button></form> -->
+<!-- <form  action = "/logout" method="post"><button class="nav-button"><i class="fas fa-solid fa-comments"></i><span>Log out</span></button></form> -->
     <div id="nav-content-highlight"></div>
   </div>
   <input id="nav-footer-toggle" type="checkbox"/>
@@ -49,5 +91,20 @@
 <div class="main-container">
     @yield('content')
 </div>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const alerts = document.querySelectorAll('.alert');
+            console.log(alerts);
+            alerts.forEach(alert => {
+                setTimeout(() => {
+                    alert.style.transition = 'opacity 0.5s ease-out';
+                    alert.style.opacity = '0';
+                    setTimeout(() => {
+                        alert.remove();
+                    }, 500);
+                }, 3000);
+            });
+        });
+    </script>
 </body>
 </html>

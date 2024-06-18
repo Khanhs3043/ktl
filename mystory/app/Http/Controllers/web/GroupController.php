@@ -33,7 +33,7 @@ class GroupController extends Controller
             'creator_id' => Auth::id(),
         ]);
 
-        return redirect('/groups');
+        return redirect('/groups')->with('success', 'new group created !');
     }
     public function delete($id){
         $group = Group::find($id);
