@@ -109,6 +109,9 @@
     border-radius: 20px;
     padding: 20px;
 }
+.content{
+    width: 90%;
+}
 .wrap-post-img{
     margin-top: 20px;
     display: flex;
