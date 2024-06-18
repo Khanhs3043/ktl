@@ -109,7 +109,7 @@ class PostController extends Controller
         // Xử lý tải lên hình ảnh nếu có
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('posts', 'public');
-            $post->image = $imagePath;
+            $post->image = "storage/".$imagePath;
         }
 
         $post->save();

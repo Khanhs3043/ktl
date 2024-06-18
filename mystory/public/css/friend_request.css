@@ -7,6 +7,7 @@
     margin-top: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.208);
     transition: 0.3s;
+    position: relative;
 }
 .request:hover{
     transition: 0.3s;
@@ -48,3 +49,19 @@
 .rj{
     background-color: rgb(238, 186, 148);
 }
+.delete-btn{
+    color: red;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    transition: 0.3s;
+    border: none;
+    background-color: transparent;
+}
+.delete-btn:hover{
+    transition: 0.3s;
+    scale: 1.2;
+}
+
+

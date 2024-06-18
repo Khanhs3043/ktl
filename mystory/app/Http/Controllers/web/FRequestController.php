@@ -18,10 +18,17 @@ class FRequestController extends Controller
         // Kiểm tra xem đã gửi yêu cầu trước đó chưa
         $existingRequest = FRequest::where('sender_id', $sender_id)
                                         ->where('receiver_id', $uid)
+                                        ->where('status','pending')
                                         ->first();
+        $rejectedRequest = FRequest::where('sender_id', $sender_id)
+                            ->where('receiver_id', $uid)
+                            ->where('status','rejected')
+                            ->first();
+        if($rejectedRequest)
+            $rejectedRequest->delete();
 
         if ($existingRequest) {
-            return response()->json(['message' => 'Friend request already sent'], 409);
+            return redirect()->back()->with('error','Friend request already sent');
         }
 
         // Tạo mới yêu cầu kết bạn
@@ -31,7 +38,7 @@ class FRequestController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->back()->withInput();
+        return redirect()->back()->withInput()->with('success','Friend request sent');
     }
 
     public function respondRequest(Request $request, $id)
@@ -60,7 +67,8 @@ class FRequestController extends Controller
     public function getRequests() // lấy những lời mời kết bạn được gửi tới (chỉ lấy trạng thái pending)
     {
         $requests = FRequest::where('receiver_id', Auth::user()->id)->where('status', 'pending')->get();
-        return view('main.friend_request',compact('requests'));
+        $sentrequests = FRequest::where('sender_id', Auth::user()->id)->where('status','!=','accepted')->get();
+        return view('main.friend_request',compact('requests','sentrequests'));
     }
     public function getMyRequests() // lấy những lời mời kết bạn được gửi đi 
     {
@@ -77,11 +85,22 @@ class FRequestController extends Controller
     {
         $currentUser = Auth::user();
         $deleted = $currentUser->deleteFriendRequest($userId);
-
+        $user = User::find($userId);
         if ($deleted) {
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Friend request to ' . $user->name . ' has been successfully canceled');
         } else {
-            return response()->json(['message' => 'No friend request found to delete'], 404);
+            return redirect()->back()->with('error' , 'No friend request found to delete');
+        }
+    }
+    public function deleteRequest2($id)
+    {
+        
+        $request = FRequest::find($id);
+        if ($request) {
+            $request->delete();
+            return redirect()->back()->with('success', 'Friend request has been successfully deleted');
+        } else {
+            return redirect()->back()->with('error' , 'No friend request found to delete');
         }
     }
 }

@@ -59,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
     //friend-request
     Route::post('send-request/{id}', [FRequestController::class, 'sendRequest']);
     Route::delete('cancel-request/{userId}', [FRequestController::class, 'deleteRequest'])->name('friend-request.delete');
+    Route::delete('delete-request/{id}', [FRequestController::class, 'deleteRequest2']);
     Route::get('friends', [FriendController::class,'getFriends']);
     Route::get('requests', [FRequestController::class,'getRequests']);
     Route::post('/request/respond/{id}', [FRequestController::class, 'respondRequest']);
