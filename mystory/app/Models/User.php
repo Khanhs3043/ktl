@@ -132,20 +132,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class, 'uid' );
     }
+    public function alltasks(){
+        $createdTasks =  $this->tasks()->get();
+        $assignedTasks = $this->assignedTasks()->get();
+    return $createdTasks->merge($assignedTasks);
+    }
 
     public function completedTasks()
     {
-        return $this->tasks()->where('status', 'finished');
+        return $this->alltasks()->where('status', 'finished');
     }
 
     public function incompleteTasks()
     {
-        return $this->tasks()->where('status', 'unfinished');
+        return $this->alltasks()->where('status', 'unfinished');
     }
 
     public function overdueTasks()
     {
-        return $this->tasks()->where('status', 'unfinished')->where('due_date', '<', now());
+        return $this->alltasks()->where('status', 'unfinished')->where('due_date', '<', now());
     }
 
     public function assignedTasks()

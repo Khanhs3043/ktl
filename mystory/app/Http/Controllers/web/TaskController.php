@@ -13,10 +13,10 @@ class TaskController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $tasks = $user->tasks;
-        $completedTasks = $user->completedTasks;
-        $incompleteTasks = $user->incompleteTasks;
-        $overdueTasks = $user->overdueTasks;
+        $tasks = $user->allTasks();
+        $completedTasks = $user->completedTasks();
+        $incompleteTasks = $user->incompleteTasks();
+        $overdueTasks = $user->overdueTasks();
         $assignedTasks = $user->assignedTasks;
         return view('main.task', compact('tasks', 'completedTasks', 'incompleteTasks', 'overdueTasks','assignedTasks'));
     }
@@ -62,8 +62,7 @@ class TaskController extends Controller
 
         $task = Task::findOrFail($id);
         $task->update($request->all());
-
-        return redirect()->back()->with('success', 'Task updated successfully.');
+        return redirect('/tasks')->with('success', 'Task updated successfully.');
     }
 
     public function destroy($id)
@@ -77,6 +76,17 @@ class TaskController extends Controller
     public function show($id)
     {
         $task = Task::findOrFail($id);
-        return view('main.task_details', compact('task'));
+        return view('main.edit_task', compact('task'));
     }
+    public function markAsUnfinished($id){
+        $task = Task::findOrFail($id);
+        $task->markAsUnfinished();
+        return redirect()->back()->with('success', 'Task deleted successfully.');
+    }
+    public function markAsFinished($id){
+        $task = Task::findOrFail($id);
+        $task->markAsFinished();
+        return redirect()->back()->with('success', 'Task deleted successfully.');
+    }
+
 }

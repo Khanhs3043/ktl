@@ -78,6 +78,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('tasks/create', [TaskController::class,'store']);
     Route::get('tasks/create', [TaskController::class,'create']);
     Route::get('tasks', [TaskController::class,'index']);
+    Route::delete('tasks/delete/{id}', [TaskController::class,'destroy']);
+    Route::post('tasks/update/{id}', [TaskController::class,'update']);
+    Route::get('task/edit/{id}', [TaskController::class,'show']);
+    Route::post('tasks/markAsFinished/{id}', [TaskController::class,'markAsFinished']);
+    Route::post('tasks/markAsUnfinished/{id}', [TaskController::class,'markAsUnfinished']);
 });
 
 

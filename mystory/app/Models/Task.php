@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Auth;
 class Task extends Model
 {
     use HasFactory;
@@ -26,5 +26,28 @@ class Task extends Model
     public function assignee()
     {
         return $this->belongsTo(User::class, 'assign_to');
+    }
+    public function isFinished()
+    {
+        return $this->status === 'finished';
+    }
+
+    // Đánh dấu task là hoàn thành
+    public function markAsFinished()
+    {
+        $this->status = 'finished';
+        return $this->save();
+    }
+
+    // Đánh dấu task là chưa hoàn thành
+    public function markAsUnfinished()
+    {
+        $this->status = 'unfinished';
+        return $this->save();
+    }
+    // Kiểm tra xem task có phải do người dùng hiện tại tạo hay không, nếu không là task được người khác giao
+    public function isCreatedByMe()
+    {
+        return $this->uid === Auth::id();
     }
 }
