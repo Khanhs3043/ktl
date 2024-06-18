@@ -13,9 +13,9 @@
         <button type="submit" class="btn btn-primary mb-2 ml-2">Tìm kiếm</button>
     </form>
     
-
-    <div class="search-list">
     @if(isset($users))
+    <div class="search-list">
+    
         @foreach($users as $user)
             <a href="/profile/{{$user->id}}">
             <div class="user-frame">
@@ -51,9 +51,9 @@
             </div>
             </a>
         @endforeach
-    @else 
-        <p style="text-align: center; width: 100%">no user found</p>
-    @endif
     </div>
+    @else 
+    <p style="text-align: center; width: 100%">no user found</p>
+    @endif
 </div>
 @endsection

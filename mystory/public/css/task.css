@@ -89,6 +89,7 @@
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 30px 100px rgba(0, 0, 0, 0.2);
+    overflow-wrap: break-word;
 }
 .close-btn{
     position: absolute;

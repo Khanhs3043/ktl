@@ -24,13 +24,10 @@
                     </div>
                 </div>
                 <div class="item-4 item" style="font-size: 16px;">
-                    <span>{{$user->profile->bio}}</span>
+                    <span><span class="bold">Bio:</span> {{$user->profile->bio? $user->profile->bio: "nothing to show"}}</span>
+                    <span><span class="bold">Date of birth:</span> {{$user->profile->dob? $user->profile->dob: "no infomation"}}</span>
+                    <span><span class="bold">Gender:</span> {{$user->profile->gender? $user->profile->gender: "no infomation"}}</span>
                 </div>
-                <div class="item-5 item">
-                </div>
-                <div class="item-6 item">
-                </div>
-                <div class="item-7 item">
                 </div>
             </div>
         </div>
@@ -49,17 +46,8 @@
                                 @method('DELETE')
                                 <button type="submit" class="delete-btn"><i class="fa-regular fa-trash-can delete"></i></button>
                             </form>
-                            <a href="#"><i id="icon" class="fa-solid fa-edit edit"></i></a>
+                            <a href="/post/edit/{{$post->id}}"><i id="icon" class="fa-solid fa-edit edit"></i></a>
                         </div>
-                        
-                        <!-- <div id="optionsMenu" class="options-menu">
-                            <a href="#"><button type="button" >Edit</button></a>
-                            <form action="/posts/{{$post->id}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Delete</button>
-                            </form>
-                        </div> -->
                     </div>
                     <article class="post">
                         <h2 class="post-title">{{$post->title}}</h2>

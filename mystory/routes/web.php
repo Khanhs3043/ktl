@@ -46,7 +46,9 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::post('search',[SearchController::class,'searchUsers']);
 
-    // Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+    //post
+    Route::get('post/edit/{id}', [PostController::class, 'edit']);
+    Route::post('post/edit/{id}', [PostController::class, 'update']);
     Route::get('posts/user/{uid}', [PostController::class, 'userPosts'])->name('posts.user');
     Route::get('posts/create', [PostController::class, 'create']);
     Route::post('posts/create', [PostController::class, 'store'])->name('posts.create');

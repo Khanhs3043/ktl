@@ -77,7 +77,7 @@ class PostController extends Controller
             return redirect()->back()->withErrors(['message' => 'Post not found']);
         }
 
-        return view('posts.edit', ['post' => $post]);
+        return view('main.edit_post', ['post' => $post]);
     }
 
     public function update(Request $request, $id) // Cập nhật bài viết
@@ -114,7 +114,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
+        return redirect('/home')->with('success', 'Post updated successfully.');
     }
 
     public function destroy($id) // Xóa bài viết

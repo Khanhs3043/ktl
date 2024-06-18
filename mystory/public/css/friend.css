@@ -8,7 +8,7 @@
     transition: 0.3s;
 }
 .friend:hover{
-    box-shadow: 0 0 25px rgba(139, 185, 203, 0.552);
+    box-shadow: 0 5px 25px rgba(162, 222, 245, 0.73);
     transition: 0.3s;
 }
 .friend img{

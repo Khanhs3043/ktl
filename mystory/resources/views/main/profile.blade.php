@@ -42,7 +42,9 @@
                     </div>
                 </div>
                 <div class="item-4 item" style="font-size: 16px;">
-                    <span>{{$user->profile->bio}}</span>
+                    <span>Bio: {{$user->profile->bio? $user->profile->bio: "nothing to show"}}</span>
+                    <span>Date of birth: {{$user->profile->dob? $user->profile->dob: "no infomation"}}</span>
+                    <span>Gender: {{$user->profile->gender? $user->profile->gender: "no infomation"}}</span>
                 </div>
             </div>
         </div>
