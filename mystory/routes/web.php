@@ -66,6 +66,7 @@ Route::middleware(['auth'])->group(function () {
     //profile
     Route::get('profile',[ProfileController::class,'index']);
     Route::get('profile/{id}',[ProfileController::class,'showProfile']);
+    Route::get('profile/edit',[ProfileController::class,'showEdit']);
 
     //group
     Route::get('groups', [GroupController::class,'myGroups']);
@@ -87,11 +88,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('tasks/markAsUnfinished/{id}', [TaskController::class,'markAsUnfinished']);
 });
 
-
-//-------------------not yet ------------
-Route::get('settings', function () {
-    return view('main.setting');
-});
 
 
 

@@ -14,10 +14,17 @@ class ProfileController extends Controller
         $posts = $user->posts()->orderBy('created_at', 'desc')->get();
         return view('main.home',compact('user','posts'));
     }
+    public function showEdit(){
+        $profile = Auth::user()->profile;
+        return view('main.edit_profile',compact('profile'));
+    }
     public function showProfile($id)
     {
         $user = User::find($id);
-        $posts = $user->posts()->orderBy('created_at', 'desc')->get();
+        $posts = $user->posts();
+        if($posts)
+            $posts = $user->posts()->orderBy('created_at', 'desc')->get();
         return view('main.profile',compact('user','posts'));
     }
+   
 }
