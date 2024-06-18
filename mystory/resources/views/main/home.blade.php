@@ -13,7 +13,7 @@
                 <div class="item-2 item">
                     <div class="profile-name">
                         <p style="padding-right: 20px;">{{$user->name}}</p>
-                        <a href="profile/edit"><button class="btn">Edit profile</button></a>
+                        <a href="editProfile"><button class="btn">Edit profile</button></a>
                         <a href="posts/create"><button class="btn">Create post</button></a>
                     </div>
                 </div>
