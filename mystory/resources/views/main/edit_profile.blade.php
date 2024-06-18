@@ -2,7 +2,8 @@
 <link rel="stylesheet" href="/css/accfix.css">
 @section('content')
 <div class="body_all">
-        <form action="">
+        <form action="/profile/edit" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="container">
                 <div class="item-1 item">
                     <p>Chỉnh sửa trang cá nhân</p>
@@ -11,7 +12,8 @@
                     <div class="profile-avatar">
                         <img src="{{$profile->avatar}}" alt="">
                         <p style="font-weight: bold;">{{$profile->username}}</p>
-                        <button class="button" type="button">Change avatar</button>
+                        <label for= 'file-input' class="button" type="button">Change</label>
+                        <input id = "file-input" type="file" style="display:none" name="avatar">
                     </div>
                 </div>
                 <div class="item-3 item">

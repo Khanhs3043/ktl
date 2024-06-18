@@ -45,7 +45,9 @@ a{
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    justify-content: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .name p{
     font-size: 18px;
@@ -53,6 +55,7 @@ a{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 input{
+    padding:10px;
     width: 100%;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
@@ -141,4 +144,7 @@ select {
 
 .submit:hover {
     background-color: #218838;
+}
+select{
+    padding: 10px;
 }

@@ -67,6 +67,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('profile',[ProfileController::class,'index']);
     Route::get('profile/{id}',[ProfileController::class,'showProfile']);
     Route::get('editProfile',[ProfileController::class,'showEdit']);
+    Route::post('profile/edit',[ProfileController::class,'update']);
 
     //group
     Route::get('groups', [GroupController::class,'myGroups']);
