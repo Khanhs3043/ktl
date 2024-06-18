@@ -19,9 +19,7 @@
                         <div class="title-name">
                             <p>Name</p> 
                         </div>
-                        <div id="editableText" contenteditable="true" class="editable-text">
-                            {{$profile->username}}
-                        </div>
+                        <input type="text" id="nameText" name="username" class="editable-name" value="{{ $profile->username }}" require>
                     </div>
                 </div>
                 <div class="item-4 item">
@@ -29,9 +27,7 @@
                         <div class="title-name">
                             <p>Bio</p>
                         </div>
-                        <div id="editableText" contenteditable="true" class="editable-text">
-                        {{$profile->bio}}
-                        </div>
+                        <input type="text" id="bioText" name="bio" class="editable-bio" value="{{ $profile->bio }}" require>
                     </div>
                 </div>
                 <div class="item-5 item">
@@ -57,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="submit">Lưu</button>
+            <button type="submit" class="submit">Save</button>
         </form>
     </div>
 @endsection
