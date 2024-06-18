@@ -29,17 +29,17 @@ class ProfileController extends Controller
     }
     public function update(Request $request) // Cập nhật bài viết
     {
-        // $validator = Validator::make($request->all(), [
-        //     'username' => 'required|string|max:255',
-        //     'gender' => 'required|string|max:50',
-        //     'dob' => 'required|date',
-        //     'bio' => 'required|text',
-        //     'avatar' => 'nullable|image|max:2048',
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|string|max:255',
+            'gender' => 'required|string|max:50',
+            'dob' => 'required|date',
+            'bio' => 'nullable|string',
+            'avatar' => 'nullable|image|max:2048',
+        ]);
 
-        // if ($validator->fails()) {
-        //     return redirect()->back()->withErrors($validator)->withInput();
-        // }
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $profile = Auth::user()->profile;
 
@@ -55,7 +55,7 @@ class ProfileController extends Controller
         // Xử lý tải lên hình ảnh nếu có
         if ($request->hasFile('avatar')) {
             $imagePath = $request->file('avatar')->store('posts', 'public');
-            $profile->avatar = $imagePath;
+            $profile->avatar = "https://supreme-system-jjrxpxjw4p793qxvw-8001.app.github.dev/storage/".$imagePath;
         }
 
         $profile->save();
